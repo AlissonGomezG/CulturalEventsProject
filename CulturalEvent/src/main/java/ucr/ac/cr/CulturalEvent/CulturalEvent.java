@@ -11,6 +11,6 @@ package ucr.ac.cr.CulturalEvent;
 public class CulturalEvent {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+       
     }
 }
