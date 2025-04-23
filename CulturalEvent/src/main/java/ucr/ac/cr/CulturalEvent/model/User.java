@@ -31,6 +31,22 @@ public class User {
         this.userType = userType;
     }
 
+    public String setColumData(int colum) {
+        switch (colum) {
+            case 0:
+                return String.valueOf(getId());
+            case 1:
+                return getName();
+            case 2:
+                return getEmail();
+            case 3:
+                return getTelephone();
+            case 4:
+                return getUserType();
+        }//endSwitch
+        return "";
+    }//endSetColumData
+    
     public int getId() {
         return id;
     }
@@ -77,7 +93,4 @@ public class User {
         return "User{" + "id=" + id + ", name=" + name + ", email=" + email + ", telephone=" + telephone + ", userType=" + userType + '}';
     }
     
-    
-    
-    
-}
+}//endClass
