@@ -4,6 +4,13 @@
  */
 package ucr.ac.cr.CulturalEvent.view;
 
+import java.awt.event.KeyListener;
+import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author allis
@@ -16,6 +23,65 @@ public class FrmReport extends javax.swing.JFrame {
     public FrmReport() {
         initComponents();
     }
+    
+      public static void setMessage(String msg){
+        
+        JOptionPane.showMessageDialog(null, msg);
+    }
+    
+    
+    
+    public void setDataTable(String [][]data, String[]labels){
+        DefaultTableModel defaultTableModel= new DefaultTableModel(data, labels);
+        this.tblReport.setModel(defaultTableModel);
+        this.tblReport.setRowSorter(new TableRowSorter<>(defaultTableModel));
+        this.jScrollPane1.setViewportView(this.tblReport);
+            
+    }
+    
+    
+    
+    
+    
+    public String[] getRowSelected(){
+        int rowSelect=this.tblReport.getSelectedRow();
+        String [] rowData=new String [this.tblReport.getColumnCount()];
+        if(rowSelect!=-1){
+            for (int i = 0; i < rowData.length; i++) {
+                rowData[i]=this.tblReport.getValueAt(rowSelect, i).toString();
+                
+            }
+            return rowData;
+        }else{
+            return new String[0];
+        }
+    }
+    
+    
+    public void listenMouse (MouseListener controller){
+        this.tblReport.addMouseListener(controller);
+    }
+    
+    public void filterByID(){
+        DefaultTableModel modelTable=(DefaultTableModel)this.tblReport.getModel();
+        
+        TableRowSorter<DefaultTableModel>sorter=new TableRowSorter<>(modelTable);
+        this.tblReport.setRowSorter(sorter);
+        String textSearch=this.txtFilterID.getText();
+        if(textSearch.length()==0){
+            sorter.setRowFilter(null);
+            this.tblReport.clearSelection();
+        }else{
+            //
+            sorter.setRowFilter(RowFilter.regexFilter(textSearch, 0));
+        }
+    }
+    
+    
+    public void listenKey (KeyListener controller){
+        this.txtFilterID.addKeyListener(controller);
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,17 +92,59 @@ public class FrmReport extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tblReport = new javax.swing.JTable();
+        txtFilterID = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        panelButton1 = new ucr.ac.cr.CulturalEvent.view.PanelButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tblReport.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(tblReport);
+
+        jLabel1.setText("Filter by ID");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(panelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(txtFilterID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(187, 187, 187))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFilterID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -48,5 +156,10 @@ public class FrmReport extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private ucr.ac.cr.CulturalEvent.view.PanelButton panelButton1;
+    private javax.swing.JTable tblReport;
+    private javax.swing.JTextField txtFilterID;
     // End of variables declaration//GEN-END:variables
 }

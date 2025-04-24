@@ -15,7 +15,7 @@ public class Event {
     private String location;
     private String time;
     private String address;
-    private String price;
+    private double price;
     private String description;
     private String organizerInformation;
     private int availableSpace;
@@ -27,13 +27,13 @@ public class Event {
         location = "";
         time = "";
         address = "";
-        price = "";
+        price = 0.0;
         description = "";
         organizerInformation = "";
         availableSpace = 0;
     }
 
-    public Event(int id, String eventName, String date, String location, String time, String address, String price, String description, String organizerInformation, int availableSpace) {
+    public Event(int id, String eventName, String date, String location, String time, String address, double price, String description, String organizerInformation, int availableSpace) {
         this.id = id;
         this.eventName = eventName;
         this.date = date;
@@ -93,11 +93,11 @@ public class Event {
     public void setAddress(String address) {
         this.address = address;
     }
-public String getPrice() {
+public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
