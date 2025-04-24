@@ -126,6 +126,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/search.png"/>
         </Property>
+        <Property name="actionCommand" type="java.lang.String" value="search"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
     </Component>
@@ -226,6 +227,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/accept.png"/>
         </Property>
+        <Property name="actionCommand" type="java.lang.String" value="ok"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
       <Events>
@@ -237,6 +239,7 @@
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/imagenes/close.png"/>
         </Property>
+        <Property name="actionCommand" type="java.lang.String" value="cancel"/>
         <Property name="contentAreaFilled" type="boolean" value="false"/>
       </Properties>
     </Component>

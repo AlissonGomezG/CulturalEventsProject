@@ -16,6 +16,8 @@ public class User {
     private String telephone;
     private String userType;
 
+   public static final String[] LABELS_USER = {"ID", "Name", "Email", "Telephone", "User Type"};
+
     public User() {
         id = 0;
         name = "";

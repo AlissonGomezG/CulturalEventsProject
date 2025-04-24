@@ -44,7 +44,7 @@ public class DialogUser extends javax.swing.JDialog {
         this.cBoxUserType.setSelectedItem(user.getUserType());
     }
         
-        public void Clean(){
+        public void clean(){
         txtId.setText("");
          txtName.setText("");
            txtEmail.setText("");
@@ -99,6 +99,7 @@ public class DialogUser extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
+        btnSearch.setActionCommand("search");
         btnSearch.setContentAreaFilled(false);
 
         txtId.setColumns(6);
@@ -137,6 +138,7 @@ public class DialogUser extends javax.swing.JDialog {
         jLabel6.setText("User type");
 
         btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept.png"))); // NOI18N
+        btnOk.setActionCommand("ok");
         btnOk.setContentAreaFilled(false);
         btnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -145,6 +147,7 @@ public class DialogUser extends javax.swing.JDialog {
         });
 
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/close.png"))); // NOI18N
+        btnCancel.setActionCommand("cancel");
         btnCancel.setContentAreaFilled(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

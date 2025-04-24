@@ -19,7 +19,7 @@ public class PanelButton extends javax.swing.JPanel {
         initComponents();
     }
     
-    public void setListen(ActionListener listener){
+ public void setListen(ActionListener listener){
         this.btnAdd.addActionListener(listener);
         this.btnDelete.addActionListener(listener);
         this.btnEdit.addActionListener(listener);
@@ -41,16 +41,19 @@ public class PanelButton extends javax.swing.JPanel {
         btnClose = new javax.swing.JButton();
 
         btnAdd.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/add.png"))); // NOI18N
+        btnAdd.setActionCommand("add");
         btnAdd.setContentAreaFilled(false);
 
         btnDelete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/delete.png"))); // NOI18N
+        btnDelete.setActionCommand("delete");
         btnDelete.setContentAreaFilled(false);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/edit.png"))); // NOI18N
+        btnEdit.setActionCommand("edit");
         btnEdit.setContentAreaFilled(false);
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/close.png"))); // NOI18N
-        btnClose.setActionCommand("Close");
+        btnClose.setActionCommand("close");
         btnClose.setContentAreaFilled(false);
         btnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -63,7 +66,7 @@ public class PanelButton extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(124, 124, 124)
+                .addContainerGap()
                 .addComponent(btnAdd)
                 .addGap(18, 18, 18)
                 .addComponent(btnEdit)
@@ -71,12 +74,12 @@ public class PanelButton extends javax.swing.JPanel {
                 .addComponent(btnDelete)
                 .addGap(18, 18, 18)
                 .addComponent(btnClose)
-                .addContainerGap(134, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(231, Short.MAX_VALUE)
+                .addContainerGap(16, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnClose)
                     .addComponent(btnDelete)
