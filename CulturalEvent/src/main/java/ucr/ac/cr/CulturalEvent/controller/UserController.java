@@ -20,6 +20,7 @@ import ucr.ac.cr.CulturalEvent.view.PanelButton;
  * @author allis
  */
 public class UserController implements ActionListener, MouseListener, KeyListener {
+
     private DialogUser dialogUser;
     private PanelButton panelButton;
     private FrmReport frmReport;
@@ -28,11 +29,9 @@ public class UserController implements ActionListener, MouseListener, KeyListene
 //    Private User userSearch;
 
     public UserController() {
-        
+
     }
 
-    
-    
     @Override
     public void actionPerformed(ActionEvent e) {
     }

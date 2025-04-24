@@ -32,8 +32,8 @@ public class UserRegister {
         }//endFor
         return out;
     }//endGetAll
-    
-     public String add(User user) {
+
+    public String add(User user) {
         if (user.getId() == userDAO.findById(user)) { //.getId()).getId()
             return "The User with the id alredy exist!";
         } else {
@@ -43,25 +43,25 @@ public class UserRegister {
             return "Error saving user";
         }//endIf
     }//endAdd
-     
+
     public String edit(User userEdit) {
         if (userDAO.update(userEdit)) {
             return "User edited succesfully";
         }//endIf
         return "Error editing user";
     }//endEdit
-    
+
     public String delete(int id) {
         if (userDAO.remove(id)) {
             return "Succecsfully delete user";
         }//endIf
         return "Error delitng user";
     }//endDelete
-        
+
     public User searchId(int id) {
         return userDAO.getElement(id);
     }//endSearchId
-    
+
     public String[][] getMatrix() {
         ArrayList<User> users = userDAO.getAll();
         if (users == null || users.isEmpty()) {
@@ -77,6 +77,5 @@ public class UserRegister {
         }//endIf
 
     }//endGetMatrix
-
 
 }//endClass

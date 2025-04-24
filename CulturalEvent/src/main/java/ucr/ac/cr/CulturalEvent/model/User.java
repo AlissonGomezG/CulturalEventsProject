@@ -9,6 +9,7 @@ package ucr.ac.cr.CulturalEvent.model;
  * @author allis
  */
 public class User {
+
     private int id;
     private String name;
     private String email;
@@ -16,17 +17,17 @@ public class User {
     private String userType;
 
     public User() {
-        id=0;
-        name="";
-        email="";
-        telephone="";
-        userType="";
+        id = 0;
+        name = "";
+        email = "";
+        telephone = "";
+        userType = "";
     }
 
     public User(int id, String name, String email, String telephone, String userType) {
         this.id = id;
         this.name = name;
-        this.email=email;
+        this.email = email;
         this.telephone = telephone;
         this.userType = userType;
     }
@@ -46,7 +47,7 @@ public class User {
         }//endSwitch
         return "";
     }//endSetColumData
-    
+
     public int getId() {
         return id;
     }
@@ -70,7 +71,6 @@ public class User {
     public void setEmail(String email) {
         this.email = email;
     }
-    
 
     public String getTelephone() {
         return telephone;
@@ -92,5 +92,5 @@ public class User {
     public String toString() {
         return "User{" + "id=" + id + ", name=" + name + ", email=" + email + ", telephone=" + telephone + ", userType=" + userType + '}';
     }
-    
+
 }//endClass
