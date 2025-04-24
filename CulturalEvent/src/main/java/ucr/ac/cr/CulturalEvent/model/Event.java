@@ -20,8 +20,12 @@ public class Event {
     private String organizerInformation;
     private int availableSpace;
 
-    public Event() {
-        id = 0;
+   
+     
+          public static final String[] LABELS_EVENT={" ID","Event name","Date","Location","Time","Address","Price","Description", "Organizer information","Available spaces"};
+
+        public Event (){
+       id = 0;
         eventName = "";
         date = "";
         location = "";
@@ -31,6 +35,7 @@ public class Event {
         description = "";
         organizerInformation = "";
         availableSpace = 0;
+      
     }
 
     public Event(int id, String eventName, String date, String location, String time, String address, double price, String description, String organizerInformation, int availableSpace) {
@@ -45,6 +50,24 @@ public class Event {
         this.organizerInformation = organizerInformation;
         this.availableSpace = availableSpace;
     }
+    
+    public String setColumData(int colum){
+        switch (colum){
+            case 0:return String.valueOf(this.getId());
+            case 1:return this.getEventName();
+            case 2:return this.getDate();
+            case 3:return this.getLocation();
+            case 4:return this.getTime();
+            case 5:return this.getAddress();
+            case 6:return String.valueOf(this.getPrice());
+            case 7:return this.getDescription();
+            case 8:return this.getOrganizerInformation();
+            case 9:return String.valueOf(this.getAvailableSpace());
+            
+        }
+        return "";
+    }
+
 
     public int getId() {
         return id;
