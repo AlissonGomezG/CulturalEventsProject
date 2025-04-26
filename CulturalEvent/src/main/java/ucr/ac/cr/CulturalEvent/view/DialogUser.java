@@ -50,12 +50,12 @@ public class DialogUser extends javax.swing.JDialog {
         txtName.setText("");
         txtEmail.setText("");
         txtTelephone.setText("");
-        cBoxUserType.setSelectedItem(0);
+        cBoxUserType.setSelectedIndex(0);
     }
 
     public void setListen(ActionListener listener) {
-        this.btnCancel.addActionListener(listener);
         this.btnOk.addActionListener(listener);
+        this.btnCancel.addActionListener(listener);
         this.btnSearch.addActionListener(listener);
     }
 

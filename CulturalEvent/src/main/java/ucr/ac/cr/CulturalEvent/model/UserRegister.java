@@ -19,8 +19,7 @@ public class UserRegister {
 
     //constructor
     public UserRegister() {
-        Type type = new TypeToken<User[]>() {
-        }.getType();
+        Type type = new TypeToken<User[]>() {}.getType();
         userDAO = new GenericDAO_JSON<User>("users.json", type);
     }//endContructor
 

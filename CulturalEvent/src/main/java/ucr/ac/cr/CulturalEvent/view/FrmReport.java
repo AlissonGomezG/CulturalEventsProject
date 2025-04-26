@@ -25,23 +25,22 @@ public class FrmReport extends javax.swing.JFrame {
     }
 
     public static void setMessage(String msg) {
-
         JOptionPane.showMessageDialog(null, msg);
     }
 
     public void setDataTable(String[][] data, String[] labels) {
         DefaultTableModel defaultTableModel = new DefaultTableModel(data, labels);
-        this.tblReport.setModel(defaultTableModel);
-        this.tblReport.setRowSorter(new TableRowSorter<>(defaultTableModel));
-        this.jScrollPane1.setViewportView(this.tblReport);
+        tblReport.setModel(defaultTableModel);
+        tblReport.setRowSorter(new TableRowSorter<>(defaultTableModel));
+        jScrollPane1.setViewportView(tblReport);
     }
 
     public String[] getRowSelected() {
-        int rowSelect = this.tblReport.getSelectedRow();
-        String[] rowData = new String[this.tblReport.getColumnCount()];
+        int rowSelect = tblReport.getSelectedRow();
+        String[] rowData = new String[tblReport.getColumnCount()];
         if (rowSelect != -1) {
             for (int i = 0; i < rowData.length; i++) {
-                rowData[i] = this.tblReport.getValueAt(rowSelect, i).toString();
+                rowData[i] = tblReport.getValueAt(rowSelect, i).toString();
             }
             return rowData;
         } else {
@@ -50,20 +49,18 @@ public class FrmReport extends javax.swing.JFrame {
     }
 
     public void listenMouse(MouseListener controller) {
-        this.tblReport.addMouseListener(controller);
+        tblReport.addMouseListener(controller);
     }
 
     public void filterByID() {
-        DefaultTableModel modelTable = (DefaultTableModel) this.tblReport.getModel();
-
+        DefaultTableModel modelTable = (DefaultTableModel)tblReport.getModel();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelTable);
-        this.tblReport.setRowSorter(sorter);
+        tblReport.setRowSorter(sorter);
         String textSearch = this.txtFilterID.getText();
         if (textSearch.length() == 0) {
             sorter.setRowFilter(null);
-            this.tblReport.clearSelection();
+            tblReport.clearSelection();
         } else {
-            //
             sorter.setRowFilter(RowFilter.regexFilter(textSearch, 0));
         }
     }

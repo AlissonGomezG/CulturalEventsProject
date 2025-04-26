@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import javax.swing.event.MouseInputListener;
 import ucr.ac.cr.CulturalEvent.model.User;
 import ucr.ac.cr.CulturalEvent.model.UserRegister;
 import ucr.ac.cr.CulturalEvent.view.DialogUser;
@@ -20,14 +20,14 @@ import ucr.ac.cr.CulturalEvent.view.PanelButton;
  *
  * @author allis
  */
-public class UserController implements ActionListener, MouseListener, KeyListener {
+public class UserController implements ActionListener, MouseInputListener, KeyListener {
 
     //atributos
     private DialogUser dialogUser;
     private PanelButton panelButton;
     private FrmReport frmUser;
     private UserRegister userRegister;
-    private int option;
+    private int option = 0;
     private User userSearch = null;
 
     //controlador
@@ -46,7 +46,7 @@ public class UserController implements ActionListener, MouseListener, KeyListene
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        frmUser.requestFocusInWindow();
         switch (e.getActionCommand()) {
 
             case "add":
@@ -133,8 +133,8 @@ public class UserController implements ActionListener, MouseListener, KeyListene
     @Override
     public void mouseClicked(MouseEvent e) {
         frmUser.requestFocusInWindow();
-        userSearch=new User();
-        String[] userRow= frmUser.getRowSelected();
+        userSearch = new User();
+        String[] userRow = frmUser.getRowSelected();
         userSearch.setId(Integer.parseInt(userRow[0]));
         userSearch.setName(userRow[1]);
         userSearch.setEmail(userRow[2]);
@@ -161,7 +161,16 @@ public class UserController implements ActionListener, MouseListener, KeyListene
     @Override
     public void keyTyped(KeyEvent e) {
     }
+    
+    @Override
+    public void mouseDragged(MouseEvent e) {
 
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
+    }
     @Override
     public void keyPressed(KeyEvent e) {
     }
