@@ -80,19 +80,18 @@ public class EventController implements ActionListener, MouseListener, KeyListen
                 break;
 
             case "ok":
-                if (validation(dialogEvent.getEvent())) {
+                 if (this.validation(this.dialogEvent.getEvent())) {
                     if (option == 1) {
-                        FrmReport.setMessage(eventRegister.add(dialogEvent.getEvent()));
-                        dialogEvent.clean();
-                        dialogEvent.dispose();
-//                    System.err.println("save");
+                        FrmReport.setMessage(this.eventRegister.add(this.dialogEvent.getEvent()));
+                        this.dialogEvent.clean();
+                        this.dialogEvent.dispose();
                     } else {
-                        FrmReport.setMessage(eventRegister.edit(dialogEvent.getEvent()));
-                        dialogEvent.clean();
-                        dialogEvent.dispose();
-//                    System.err.println("Edit");
-                    }//endIf
-                }//endIf
+                        FrmReport.setMessage(this.eventRegister.edit(this.dialogEvent.getEvent()));
+                        this.dialogEvent.clean();
+                        this.dialogEvent.setEnableID(true);
+                        this.dialogEvent.dispose();
+                    }
+                }
                 eventSearch = null;
                 frmEvent.setDataTable(eventRegister.getMatrix(), Event.LABELS_EVENT);
                 dialogEvent.setEnableID(true);

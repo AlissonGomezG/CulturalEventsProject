@@ -52,7 +52,8 @@ public class DialogEvent extends javax.swing.JDialog {
         this.txtTime.setText(event.getTime());
         this.txtAddress.setText(event.getAddress());
         this.txtPrice.setText(String.valueOf(event.getPrice()));
-        this.txtOrganizerInformation.setText(event.getDescription());
+        this.txtDescription.setText(event.getDescription());
+        this.txtOrganizerInformation.setText(event.getOrganizerInformation());
         this.txtAvailableSpace.setText(String.valueOf(event.getAvailableSpace()));
     }
 
@@ -64,6 +65,7 @@ public class DialogEvent extends javax.swing.JDialog {
         txtTime.setText("");
         txtAddress.setText("");
         txtPrice.setText("");
+        txtDescription.setText("");
         txtOrganizerInformation.setText("");
         txtAvailableSpace.setText("");
 
