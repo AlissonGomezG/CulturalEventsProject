@@ -52,14 +52,14 @@ public class FrmReport extends javax.swing.JFrame {
         tblReport.addMouseListener(controller);
     }
 
-    public void filterByID() {
-        DefaultTableModel modelTable = (DefaultTableModel)tblReport.getModel();
+        public void filterByID() {
+        DefaultTableModel modelTable = (DefaultTableModel)this.tblReport.getModel();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelTable);
-        tblReport.setRowSorter(sorter);
-        String textSearch = txtFilterID.getText();
+        this.tblReport.setRowSorter(sorter);
+        String textSearch = this.txtFilterID.getText();
         if (textSearch.length() == 0) {
             sorter.setRowFilter(null);
-            tblReport.clearSelection();
+            this.tblReport.clearSelection();
         } else {
             sorter.setRowFilter(RowFilter.regexFilter(textSearch, 0));
         }
@@ -101,25 +101,31 @@ public class FrmReport extends javax.swing.JFrame {
 
         jLabel1.setText("Filter By ID");
 
+        txtFilterID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFilterIDActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(285, 285, 285)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtFilterID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(panelButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(129, 129, 129))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(189, 189, 189)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtFilterID, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -137,6 +143,10 @@ public class FrmReport extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtFilterIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFilterIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFilterIDActionPerformed
 
     /**
      * @param args the command line arguments

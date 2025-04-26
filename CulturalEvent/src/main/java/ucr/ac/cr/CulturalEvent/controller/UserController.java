@@ -174,10 +174,13 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
     }
     @Override
     public void keyPressed(KeyEvent e) {
+       
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+         this.frmUser.requestFocusInWindow();
+        this.frmUser.filterByID();
     }
 
 }

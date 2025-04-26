@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "eventName": "semana U",
+    "date": "12 abril",
+    "location": "UCR",
+    "time": "10:00",
+    "address": "Esparza",
+    "price": 3.0,
+    "description": "jajja",
+    "organizerInformation": "iiiw",
+    "availableSpace": 10
+  }
+]
