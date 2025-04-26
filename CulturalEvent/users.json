@@ -2,8 +2,22 @@
   {
     "id": 1,
     "name": "Johan",
-    "email": "johan@gmail.com",
-    "telephone": "636372",
+    "email": "Johan@gmail.com",
+    "telephone": "7777777",
+    "userType": "Organizer"
+  },
+  {
+    "id": 2,
+    "name": "Alisson",
+    "email": "Alisson@gmail.com",
+    "telephone": "8888888",
+    "userType": "User"
+  },
+  {
+    "id": 3,
+    "name": "asdasd",
+    "email": "asdas",
+    "telephone": "2343",
     "userType": "User"
   }
 ]

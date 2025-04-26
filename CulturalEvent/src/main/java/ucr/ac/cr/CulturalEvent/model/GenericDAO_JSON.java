@@ -54,6 +54,12 @@ public class GenericDAO_JSON<T> {
 
     public boolean save(T element) {
         ArrayList<T> elements = this.getAll();
+        for (int i = 0; i < elements.size(); i++) {
+            T e = elements.get(i);
+            if (findById(element) == this.findById(e)) {
+                return false;
+            }//endIf
+        }//endFor
         if (elements.add(element)) {
             addElements(elements);
             return true;
@@ -67,6 +73,7 @@ public class GenericDAO_JSON<T> {
             T e = elements.get(i);
             if (findById(element) == findById(e)) {
                 elements.set(i, element);
+                addElements(elements);
                 return true;
             }//endIf
         }//endFor
@@ -79,6 +86,7 @@ public class GenericDAO_JSON<T> {
             T e = elements.get(i);
             if (findById(e) == id) {
                 elements.remove(i);
+                addElements(elements);
                 return true;
             }//endIf
         }//endFor

@@ -56,7 +56,7 @@ public class FrmReport extends javax.swing.JFrame {
         DefaultTableModel modelTable = (DefaultTableModel)tblReport.getModel();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelTable);
         tblReport.setRowSorter(sorter);
-        String textSearch = this.txtFilterID.getText();
+        String textSearch = txtFilterID.getText();
         if (textSearch.length() == 0) {
             sorter.setRowFilter(null);
             tblReport.clearSelection();
@@ -66,7 +66,7 @@ public class FrmReport extends javax.swing.JFrame {
     }
 
     public void listenKey(KeyListener controller) {
-        this.txtFilterID.addKeyListener(controller);
+        txtFilterID.addKeyListener(controller);
     }
 
     /**

@@ -33,14 +33,14 @@ public class UserRegister {
     }//endGetAll
 
     public String add(User user) {
-        if (user.getId() == userDAO.findById(user)) {
-            return "The User with the id alredy exist!";
-        } else {
+//        if (user.getId() == userDAO.findById(user)) {
+//            return "The User with the id alredy exist!";
+//        } else {
             if (userDAO.save(user)) {
                 return "User added succesfully";
             }//endIF
             return "Error saving user";
-        }//endIf
+//        }//endIf
     }//endAdd
 
     public String edit(User userEdit) {

@@ -75,9 +75,9 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
                 break;
 
             case "search":
-                System.out.println("search");
+//                System.out.println("search");
                 dialogUser.setUser(userRegister.searchId(Integer.parseInt(dialogUser.getId())));
-                dialogUser.setEnableID(false);
+                dialogUser.setEnableID(true);
                 break;
 
             case "ok":
@@ -97,11 +97,12 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
                 userSearch = null;
                 frmUser.setDataTable(userRegister.getMatrix(), User.LABELS_USER);
                 dialogUser.setEnableID(true);
+                dialogUser.dispose();
                 break;
             case "cancel":
                 dialogUser.clean();
-                dialogUser.setVisible(false);
                 dialogUser.setEnableID(true);
+                dialogUser.dispose();
                 userSearch = null;
 //                System.out.println("Presionó Cancel");
                 break;
