@@ -115,35 +115,71 @@ public class EventController implements ActionListener, MouseListener, KeyListen
         } else if (event.getEventName().isEmpty()) {
             FrmReport.setMessage("The event name is missing");
             return false;
+             } else if (event.getLocation().isEmpty()) {
+            FrmReport.setMessage("The location is missing");
+            return false;
+            } else if (event.getAddress().isEmpty()) {
+            FrmReport.setMessage("The address Type is missing");
+            return false;
+             } else if (event.getAvailableSpace() == 0) {
+            FrmReport.setMessage("The available space is missing");
+            return false;
         } else if (event.getDate().isEmpty()) {
             FrmReport.setMessage("The date is missing");
-            return false;
-        } else if (event.getLocation().isEmpty()) {
-            FrmReport.setMessage("The location is missing");
             return false;
         } else if (event.getTime().isEmpty()) {
             FrmReport.setMessage("The time is missing");
             return false;
-        } else if (event.getAddress().isEmpty()) {
-            FrmReport.setMessage("The address Type is missing");
+            } else if (event.getDescription().isEmpty()) {
+            FrmReport.setMessage("The description is missing");
+            return false;
+            } else if (event.getOrganizerInformation().isEmpty()) {
+            FrmReport.setMessage("The organizer information is missing");
             return false;
         } else if (event.getPrice() == 0.0) {
             FrmReport.setMessage("The price is missing");
-            return false;
-        } else if (event.getDescription().isEmpty()) {
-            FrmReport.setMessage("The description is missing");
-            return false;
-        } else if (event.getOrganizerInformation().isEmpty()) {
-            FrmReport.setMessage("The organizer information is missing");
-            return false;
-        } else if (event.getAvailableSpace() == 0) {
-            FrmReport.setMessage("The available space is missing");
             return false;
         } else {
             return true;
         }
     }
     
+    
+//    public boolean validation(Event event) {
+//        if (event.getId() == 0) {
+//            FrmReport.setMessage("The ID is missing");
+//            return false;
+//        } else if (event.getEventName().trim().isEmpty()) {
+//            FrmReport.setMessage("The event name is missing");
+//            return false;
+//        } else if (event.getDate().trim().isEmpty()) {
+//            FrmReport.setMessage("The date is missing");
+//            return false;
+//        } else if (event.getLocation().trim().isEmpty()) {
+//            FrmReport.setMessage("The location is missing");
+//            return false;
+//        } else if (event.getTime().trim().isEmpty()) {
+//            FrmReport.setMessage("The time is missing");
+//            return false;
+//        } else if (event.getAddress().trim().isEmpty()) {
+//            FrmReport.setMessage("The address Type is missing");
+//            return false;
+//        } else if (String.valueOf(event.getPrice()).trim().isEmpty() || event.getPrice() == 0.0)  {
+//            FrmReport.setMessage("The price is missing");
+//            return false;
+//        } else if (event.getDescription().trim().isEmpty()) {
+//            FrmReport.setMessage("The description is missing");
+//            return false;
+//        } else if (event.getOrganizerInformation().trim().isEmpty()) {
+//            FrmReport.setMessage("The organizer information is missing");
+//            return false;
+//        } else if (String.valueOf(event.getAvailableSpace()).trim().isEmpty() || event.getAvailableSpace() == 0)  {
+//            FrmReport.setMessage("The available space is missing");
+//            return false;
+//        } else {
+//            return true;
+//        }
+//    }
     
 
     @Override

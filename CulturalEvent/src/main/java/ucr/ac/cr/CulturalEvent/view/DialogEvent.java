@@ -23,24 +23,59 @@ public class DialogEvent extends javax.swing.JDialog {
         initComponents();
     }
 
+//    public Event getEvent() {
+//        Event event = new Event();
+//        if (this.txtId.getText().equals("")) {
+//            event.setId(0);
+//        } else {
+//            event.setId(Integer.parseInt(this.txtId.getText().toString()));
+//        }
+//
+//        event.setId(Integer.parseInt(this.txtId.getText().toString()));
+//        event.setEventName(this.txtEventName.getText().toString());
+//        event.setDate(this.txtDate.getText().toString());
+//        event.setLocation(this.txtLocation.getText());
+//        event.setTime(this.txtTime.getText());
+//        event.setAddress(this.txtAddress.getText());
+//        event.setPrice(Double.parseDouble(this.txtPrice.getText().toString()));
+//        event.setOrganizerInformation(this.txtOrganizerInformation.getText());
+//        event.setDescription(this.txtDescription.getText());
+//        event.setAvailableSpace(Integer.parseInt(this.txtAvailableSpace.getText().toString()));
+//        return event;
+//    }
     public Event getEvent() {
+
         Event event = new Event();
-        if (this.txtId.getText().equals("")) {
+
+        // Validar campo ID
+        if (txtId.getText().trim().isEmpty()) {
             event.setId(0);
         } else {
-            event.setId(Integer.parseInt(this.txtId.getText().toString()));
+            event.setId(Integer.parseInt(txtId.getText().trim()));
         }
 
-        event.setId(Integer.parseInt(this.txtId.getText().toString()));
-        event.setEventName(this.txtEventName.getText().toString());
-        event.setDate(this.txtDate.getText().toString());
-        event.setLocation(this.txtLocation.getText());
-        event.setTime(this.txtTime.getText());
-        event.setAddress(this.txtAddress.getText());
-        event.setPrice(Double.parseDouble(this.txtPrice.getText().toString()));
-        event.setOrganizerInformation(this.txtOrganizerInformation.getText());
-        event.setDescription(this.txtDescription.getText());
-        event.setAvailableSpace(Integer.parseInt(this.txtAvailableSpace.getText().toString()));
+        // Validar campo precio
+        if (txtPrice.getText().trim().isEmpty()) {
+            event.setPrice(0.0);
+        } else {
+            event.setPrice(Double.parseDouble(txtPrice.getText().trim()));
+        }
+
+        // Validar espacio disponible
+        if (txtAvailableSpace.getText().trim().isEmpty()) {
+            event.setAvailableSpace(0);
+        } else {
+            event.setAvailableSpace(Integer.parseInt(txtAvailableSpace.getText().trim()));
+        }
+        // Validar otros campos de texto
+        event.setEventName(txtEventName.getText().trim());
+        event.setDate(txtDate.getText().trim());
+        event.setLocation(txtLocation.getText().trim());
+        event.setTime(txtTime.getText().trim());
+        event.setAddress(txtAddress.getText().trim());
+        event.setDescription(txtDescription.getText().trim());
+        event.setOrganizerInformation(txtOrganizerInformation.getText().trim());
+        
         return event;
     }
 

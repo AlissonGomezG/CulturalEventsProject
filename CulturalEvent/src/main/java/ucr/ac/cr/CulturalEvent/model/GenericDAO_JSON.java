@@ -93,17 +93,20 @@ public class GenericDAO_JSON<T> {
         return false;
     }//endRemove
 
+
+    
     public int findById(T element) {
         ArrayList<T> elements = this.getAll();
         if (elements.size() >= 1) {
             if (element instanceof User) {
                 return ((User) element).getId();
-//            } else if (element instanceof UserCS) {
-//                return ((UserCS) element).getID();
+            } else if (element instanceof Event) {
+                return ((Event) element).getId();
             }
-        }//endIf
+        }
         return -1;
-    }//endFindById
+    }
+    
 
     public T getElement(int id) {
         ArrayList<T> elements = this.getAll();
