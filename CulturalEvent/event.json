@@ -10,5 +10,17 @@
     "description": "jajja",
     "organizerInformation": "iiiwp",
     "availableSpace": 11
+  },
+  {
+    "id": 2,
+    "eventName": "hdj",
+    "date": "ldldl",
+    "location": "kssl",
+    "time": "ldlld",
+    "address": "dldl",
+    "price": 4.0,
+    "description": "ldldl",
+    "organizerInformation": "kdk",
+    "availableSpace": 7
   }
 ]

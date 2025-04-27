@@ -77,4 +77,23 @@ public class UserRegister {
 
     }//endGetMatrix
 
+    
+     public String[] getCBoxUser(){
+        ArrayList<User> users=this.userDAO.getAll();
+         if(users==null || users.isEmpty()){
+            return new String[0];
+        }else{
+             String[] listUsers=new String [users.size()];
+             for (int i = 0; i < listUsers.length; i++) {
+                 listUsers[i]=users.get(i).getId()+"-"+users.get(i).getName();
+                 
+             }
+             return listUsers;
+         }
+        }
+      
+        public User getUserByIndex (int index){
+         ArrayList<User> users=this.userDAO.getAll();
+         return users.get(index);
+     }
 }//endClass

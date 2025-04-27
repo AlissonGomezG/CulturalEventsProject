@@ -3,10 +3,9 @@
  */
 package ucr.ac.cr.CulturalEvent;
 
-import ucr.ac.cr.CulturalEvent.controller.EventController;
-import ucr.ac.cr.CulturalEvent.controller.UserController;
-import ucr.ac.cr.CulturalEvent.model.EventRegister;
-import ucr.ac.cr.CulturalEvent.model.UserRegister;
+
+import ucr.ac.cr.CulturalEvent.controller.MenuController;
+
 
 /**
  *
@@ -15,11 +14,7 @@ import ucr.ac.cr.CulturalEvent.model.UserRegister;
 public class CulturalEvent {
 
     public static void main(String[] args) {
-//       UserRegister userRegister = new UserRegister();
-//       new UserController(userRegister);
-
-        EventRegister eventRegister = new EventRegister();
-        new EventController(eventRegister);
+        new MenuController();
 
     }//endMain
 }//endClass
