@@ -1,23 +1,30 @@
 [
   {
     "id": 1,
-    "name": "Johan",
-    "email": "Johan@gmail.com",
-    "telephone": "7777777",
-    "userType": "Organizer"
-  },
-  {
-    "id": 2,
-    "name": "Alisson",
-    "email": "Alisson@gmail.com",
-    "telephone": "8888888",
+    "name": "Laura Gonzalez",
+    "email": "laura.gonzalez@gmail.com",
+    "telephone": "8888-1234",
     "userType": "User"
   },
   {
+    "id": 2,
+    "name": "Alisson Gomez",
+    "email": "Alisson.gomez@gmail.com",
+    "telephone": "89064566",
+    "userType": "Organizer"
+  },
+  {
     "id": 3,
-    "name": "asdasd",
-    "email": "asdas",
-    "telephone": "2343",
+    "name": "Johan Brenes",
+    "email": "Johan.Brenes@gmail.com",
+    "telephone": "87544040",
+    "userType": "Organizer"
+  },
+  {
+    "id": 4,
+    "name": "Andres Jimenez",
+    "email": "Andres.jimenez@gmail.com",
+    "telephone": "83452006",
     "userType": "User"
   }
 ]

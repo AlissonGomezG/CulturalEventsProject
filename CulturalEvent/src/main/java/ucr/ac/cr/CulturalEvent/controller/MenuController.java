@@ -6,8 +6,10 @@ package ucr.ac.cr.CulturalEvent.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 import ucr.ac.cr.CulturalEvent.model.Event;
 import ucr.ac.cr.CulturalEvent.model.EventRegister;
+import ucr.ac.cr.CulturalEvent.model.User;
 import ucr.ac.cr.CulturalEvent.model.UserRegister;
 import ucr.ac.cr.CulturalEvent.view.FrmMenu;
 import ucr.ac.cr.CulturalEvent.view.FrmTblEvent;
@@ -49,8 +51,32 @@ public class MenuController implements ActionListener {
                 break;
 
             case "Reservation":
-                new ReservationController(userRegister, eventRegister);
+                
+                 String id = JOptionPane.showInputDialog("Digite su ID:");
+                 String userName = JOptionPane.showInputDialog("Digite su nombre:");
+
+                if (userName.isEmpty() || id.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Debe ingresar nombre e ID para continuar.");
+                    
+                }
+
+                try {
+                    int userId = Integer.parseInt(id);
+                    User user = userRegister.searchId(userId);
+
+                    if (user == null || !user.getName().equalsIgnoreCase(userName)) {
+                        JOptionPane.showMessageDialog(null, "Usuario no registrado. Debe registrarse primero.");
+                        
+                    }
+
+                    // Si todo está bien, ahora  muestra la ventana de reservaciones
+                    new ReservationController(userRegister, eventRegister);
+
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Debe digitar un número válido para el ID.");
+                }
                 break;
+                
 
             case "ViewAvailableEvents":
                 FrmTblEvent frmTblEvent = new FrmTblEvent();

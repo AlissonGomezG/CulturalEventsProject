@@ -1,26 +1,38 @@
 [
   {
     "id": 1,
-    "eventName": "semana U",
-    "date": "12 abril",
-    "location": "UCR",
-    "time": "10:00",
-    "address": "Esparza",
-    "price": 3.0,
-    "description": "jajja",
+    "eventName": "Festival de Arte",
+    "date": "05 de Mayo",
+    "location": "Casa de la cultura",
+    "time": "6:00 pm",
+    "address": "Puntarenas",
+    "price": 2500.0,
+    "description": "Artes escénicas, música, teatro.",
     "organizerInformation": "iiiwp",
-    "availableSpace": 8
+    "availableSpace": 48
   },
   {
     "id": 2,
-    "eventName": "hdj",
-    "date": "ldldl",
-    "location": "kssl",
-    "time": "ldlld",
-    "address": "dldl",
-    "price": 4.0,
-    "description": "ldldl",
+    "eventName": "Dia 0es3",
+    "date": "30 de Abril",
+    "location": "La sabana",
+    "time": "8:00 am",
+    "address": "San Jose",
+    "price": 1000.0,
+    "description": "Musica, yoga y mas",
     "organizerInformation": "kdk",
-    "availableSpace": 7
+    "availableSpace": 25
+  },
+  {
+    "id": 3,
+    "eventName": "Noche nacional",
+    "date": "10 de Julio",
+    "location": "Estadio Nacional",
+    "time": "7:00",
+    "address": "San Jose",
+    "price": 10000.0,
+    "description": "Concierto con artistas nacinales",
+    "organizerInformation": "yryryry",
+    "availableSpace": 100
   }
 ]
