@@ -23,12 +23,12 @@ public class FrmReservation extends javax.swing.JFrame {
     public FrmReservation() {
         initComponents();
     }
-    
+
     //Este metodo recibe el arreglo y rellena el comboBox
     public void setCBoxUsers(String[] listUsers) {
         this.cboxUsers.setModel(new DefaultComboBoxModel<>(listUsers));
     }
-    
+
     public void listenCBoxUsers(ActionListener controller) {
         this.cboxUsers.addActionListener(controller);
     }
@@ -45,56 +45,32 @@ public class FrmReservation extends javax.swing.JFrame {
         this.lblTelefono.setText("Telephone: " + user.getTelephone());
         this.lblUserType.setText("User type: " + user.getUserType());
     }
-    
+
     public void setTblEvent(String[][] data, String[] labels) {
         this.tblEvent.setModel(new DefaultTableModel(data, labels));
         this.jScrollPane3.setViewportView(this.tblEvent);
     }
-    
+
     public int getRowIDSpace() {
         int rowSelected = this.tblEvent.getSelectedRow();
         return Integer.parseInt(this.tblEvent.getValueAt(rowSelected, 0).toString());
     }
-    
+
     public void listenMouseTbl(MouseListener controller) {
         this.tblEvent.addMouseListener(controller);
     }
-    
-    public void addReserveTable(Event event, int espacio, double total) {
+
+    public void addReserveTable(Event event, int availableSpaces, double total) {
         DefaultTableModel model = (DefaultTableModel) this.tblReservation.getModel();
         model.addRow(new String[]{String.valueOf(event.getId()),
             event.getEventName(),
             event.getDate(),
             event.getLocation(),
             event.getTime(),
-            event.getAddress(),
             String.valueOf(event.getPrice()),
-            event.getDescription(),
-            event.getOrganizerInformation(),
-            String.valueOf(event.getAvailableSpace()),
-            String.valueOf(espacio),
+            String.valueOf(availableSpaces),
             String.valueOf(total)});
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -124,7 +100,7 @@ public class FrmReservation extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Event", "Date", "Location", "Time", "Address", "Price", "Descrption", "Organizer Info", "Available Spaces"
+                "ID", "Event", "Date", "Location", "Time", "Price", "Available Spaces", "Total"
             }
         ));
         jScrollPane4.setViewportView(tblReservation);
@@ -185,17 +161,12 @@ public class FrmReservation extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 122, Short.MAX_VALUE)
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 576, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblName)
-                                    .addComponent(lblID)
-                                    .addComponent(lblTelefono)
-                                    .addComponent(lblUserType))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblName)
+                            .addComponent(lblID)
+                            .addComponent(lblTelefono)
+                            .addComponent(lblUserType))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 200, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(115, 115, 115))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -204,6 +175,10 @@ public class FrmReservation extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton1)
                         .addGap(14, 14, 14))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(91, 91, 91))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -248,7 +223,6 @@ public class FrmReservation extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cboxUsers;

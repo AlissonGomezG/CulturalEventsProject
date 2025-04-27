@@ -19,16 +19,15 @@ import ucr.ac.cr.CulturalEvent.view.FrmReservation;
  * @author allis
  */
 public class ReservationController implements ActionListener, MouseListener {
-    
-    
+
     private FrmReservation frmReservation;
     private UserRegister userRegister;
     private EventRegister eventRegister;
 
     public ReservationController(UserRegister userRegister, EventRegister eventRegister) {
-        frmReservation= new FrmReservation();
-        this.userRegister=userRegister;
-        this.eventRegister=eventRegister;
+        frmReservation = new FrmReservation();
+        this.userRegister = userRegister;
+        this.eventRegister = eventRegister;
         frmReservation.setCBoxUsers(this.userRegister.getCBoxUser());
         this.frmReservation.listenCBoxUsers(this);
         this.frmReservation.setTblEvent(this.eventRegister.getMatrix(), Event.LABELS_EVENT);
@@ -36,11 +35,9 @@ public class ReservationController implements ActionListener, MouseListener {
         this.frmReservation.setVisible(true);
     }
 
-    
-    
     @Override
     public void actionPerformed(ActionEvent e) {
-        switch(e.getActionCommand()){
+        switch (e.getActionCommand()) {
             case "cBoxUsers":
                 this.frmReservation.setUserLabels(this.userRegister.getUserByIndex(this.frmReservation.getCBoxUserIndex()));
                 break;
@@ -49,11 +46,12 @@ public class ReservationController implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Event event=this.eventRegister.searchId(this.frmReservation.getRowIDSpace());
-        
-        int espacio= Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de espacios a reservar"));
-        double total=espacio*event.getPrice();
-        this.frmReservation.addReserveTable(event, espacio, total);
+        Event event = this.eventRegister.searchId(this.frmReservation.getRowIDSpace());
+
+        int espacio = Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de espacios a reservar"));
+        double total = espacio * event.getPrice();
+        int AvailableSpaces = event.getAvailableSpace() - espacio;
+        this.frmReservation.addReserveTable(event, AvailableSpaces, total);
     }
 
     @Override
@@ -71,5 +69,5 @@ public class ReservationController implements ActionListener, MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
+
 }
