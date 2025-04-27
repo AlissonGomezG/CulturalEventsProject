@@ -19,7 +19,8 @@ public class UserRegister {
 
     //constructor
     public UserRegister() {
-        Type type = new TypeToken<User[]>() {}.getType();
+        Type type = new TypeToken<User[]>() {
+        }.getType();
         userDAO = new GenericDAO_JSON<User>("users.json", type);
     }//endContructor
 
@@ -33,14 +34,10 @@ public class UserRegister {
     }//endGetAll
 
     public String add(User user) {
-//        if (user.getId() == userDAO.findById(user)) {
-//            return "The User with the id alredy exist!";
-//        } else {
-            if (userDAO.save(user)) {
-                return "User added succesfully";
-            }//endIF
-            return "Error saving user";
-//        }//endIf
+        if (userDAO.save(user)) {
+            return "User added succesfully";
+        }//endIF
+        return "Error saving user";
     }//endAdd
 
     public String edit(User userEdit) {
@@ -77,23 +74,23 @@ public class UserRegister {
 
     }//endGetMatrix
 
-    
-     public String[] getCBoxUser(){
-        ArrayList<User> users=this.userDAO.getAll();
-         if(users==null || users.isEmpty()){
+    public String[] getCBoxUser() {
+        ArrayList<User> users = this.userDAO.getAll();
+        if (users == null || users.isEmpty()) {
             return new String[0];
-        }else{
-             String[] listUsers=new String [users.size()];
-             for (int i = 0; i < listUsers.length; i++) {
-                 listUsers[i]=users.get(i).getId()+"-"+users.get(i).getName();
-                 
-             }
-             return listUsers;
-         }
+        } else {
+            String[] listUsers = new String[users.size()];
+            for (int i = 0; i < listUsers.length; i++) {
+                listUsers[i] = users.get(i).getId() + "-" + users.get(i).getName();
+
+            }
+            return listUsers;
         }
-      
-        public User getUserByIndex (int index){
-         ArrayList<User> users=this.userDAO.getAll();
-         return users.get(index);
-     }
+    }//end
+
+    public User getUserByIndex(int index) {
+        ArrayList<User> users = this.userDAO.getAll();
+        return users.get(index);
+    }//end
+
 }//endClass

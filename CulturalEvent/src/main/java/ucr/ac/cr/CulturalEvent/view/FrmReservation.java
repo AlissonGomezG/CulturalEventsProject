@@ -254,4 +254,4 @@ public class FrmReservation extends javax.swing.JFrame {
     private javax.swing.JTable tblEvent;
     private javax.swing.JTable tblReservation;
     // End of variables declaration//GEN-END:variables
-}
+}//endClass

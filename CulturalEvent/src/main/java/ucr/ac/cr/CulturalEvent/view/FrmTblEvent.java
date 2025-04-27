@@ -18,9 +18,9 @@ public class FrmTblEvent extends javax.swing.JFrame {
     public FrmTblEvent() {
         initComponents();
     }
-    
-    public void setDataTableCreative (String[][] data, String[] labels){
-        this.tblEvent.setModel(new DefaultTableModel(data,labels));
+
+    public void setDataTableCreative(String[][] data, String[] labels) {
+        this.tblEvent.setModel(new DefaultTableModel(data, labels));
         this.jScrollPane1.setViewportView(this.tblEvent);
     }
 
@@ -99,14 +99,12 @@ public class FrmTblEvent extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
@@ -114,4 +112,4 @@ public class FrmTblEvent extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblEvent;
     // End of variables declaration//GEN-END:variables
-}
+}//endClass

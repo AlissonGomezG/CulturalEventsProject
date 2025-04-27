@@ -52,8 +52,8 @@ public class FrmReport extends javax.swing.JFrame {
         tblReport.addMouseListener(controller);
     }
 
-        public void filterByID() {
-        DefaultTableModel modelTable = (DefaultTableModel)this.tblReport.getModel();
+    public void filterByID() {
+        DefaultTableModel modelTable = (DefaultTableModel) this.tblReport.getModel();
         TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(modelTable);
         this.tblReport.setRowSorter(sorter);
         String textSearch = this.txtFilterID.getText();
@@ -164,4 +164,4 @@ public class FrmReport extends javax.swing.JFrame {
     private javax.swing.JTable tblReport;
     private javax.swing.JTextField txtFilterID;
     // End of variables declaration//GEN-END:variables
-}
+}//endClass

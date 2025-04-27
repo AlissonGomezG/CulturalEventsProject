@@ -26,5 +26,12 @@
     "email": "Andres.jimenez@gmail.com",
     "telephone": "83452006",
     "userType": "User"
+  },
+  {
+    "id": 5,
+    "name": "Juan Madriz",
+    "email": "Juan@gmail.com",
+    "telephone": "86212574",
+    "userType": "User"
   }
 ]

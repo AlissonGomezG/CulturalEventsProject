@@ -74,13 +74,12 @@ public class EventController implements ActionListener, MouseListener, KeyListen
                 break;
 
             case "search":
-//                System.out.println("search");
                 dialogEvent.setEvent(eventRegister.searchId(Integer.parseInt(dialogEvent.getId())));
                 dialogEvent.setEnableID(true);
                 break;
 
             case "ok":
-                 if (this.validation(this.dialogEvent.getEvent())) {
+                if (this.validation(this.dialogEvent.getEvent())) {
                     if (option == 1) {
                         FrmReport.setMessage(this.eventRegister.add(this.dialogEvent.getEvent()));
                         this.dialogEvent.clean();
@@ -115,13 +114,13 @@ public class EventController implements ActionListener, MouseListener, KeyListen
         } else if (event.getEventName().isEmpty()) {
             FrmReport.setMessage("The event name is missing");
             return false;
-             } else if (event.getLocation().isEmpty()) {
+        } else if (event.getLocation().isEmpty()) {
             FrmReport.setMessage("The location is missing");
             return false;
-            } else if (event.getAddress().isEmpty()) {
+        } else if (event.getAddress().isEmpty()) {
             FrmReport.setMessage("The address Type is missing");
             return false;
-             } else if (event.getAvailableSpace() == 0) {
+        } else if (event.getAvailableSpace() == 0) {
             FrmReport.setMessage("The available space is missing");
             return false;
         } else if (event.getDate().isEmpty()) {
@@ -130,10 +129,10 @@ public class EventController implements ActionListener, MouseListener, KeyListen
         } else if (event.getTime().isEmpty()) {
             FrmReport.setMessage("The time is missing");
             return false;
-            } else if (event.getDescription().isEmpty()) {
+        } else if (event.getDescription().isEmpty()) {
             FrmReport.setMessage("The description is missing");
             return false;
-            } else if (event.getOrganizerInformation().isEmpty()) {
+        } else if (event.getOrganizerInformation().isEmpty()) {
             FrmReport.setMessage("The organizer information is missing");
             return false;
         } else if (event.getPrice() == 0.0) {
@@ -143,44 +142,6 @@ public class EventController implements ActionListener, MouseListener, KeyListen
             return true;
         }
     }
-    
-    
-//    public boolean validation(Event event) {
-//        if (event.getId() == 0) {
-//            FrmReport.setMessage("The ID is missing");
-//            return false;
-//        } else if (event.getEventName().trim().isEmpty()) {
-//            FrmReport.setMessage("The event name is missing");
-//            return false;
-//        } else if (event.getDate().trim().isEmpty()) {
-//            FrmReport.setMessage("The date is missing");
-//            return false;
-//        } else if (event.getLocation().trim().isEmpty()) {
-//            FrmReport.setMessage("The location is missing");
-//            return false;
-//        } else if (event.getTime().trim().isEmpty()) {
-//            FrmReport.setMessage("The time is missing");
-//            return false;
-//        } else if (event.getAddress().trim().isEmpty()) {
-//            FrmReport.setMessage("The address Type is missing");
-//            return false;
-//        } else if (String.valueOf(event.getPrice()).trim().isEmpty() || event.getPrice() == 0.0)  {
-//            FrmReport.setMessage("The price is missing");
-//            return false;
-//        } else if (event.getDescription().trim().isEmpty()) {
-//            FrmReport.setMessage("The description is missing");
-//            return false;
-//        } else if (event.getOrganizerInformation().trim().isEmpty()) {
-//            FrmReport.setMessage("The organizer information is missing");
-//            return false;
-//        } else if (String.valueOf(event.getAvailableSpace()).trim().isEmpty() || event.getAvailableSpace() == 0)  {
-//            FrmReport.setMessage("The available space is missing");
-//            return false;
-//        } else {
-//            return true;
-//        }
-//    }
-    
 
     @Override
     public void mouseClicked(MouseEvent e) {

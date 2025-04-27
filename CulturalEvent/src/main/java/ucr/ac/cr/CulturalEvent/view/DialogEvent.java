@@ -23,26 +23,6 @@ public class DialogEvent extends javax.swing.JDialog {
         initComponents();
     }
 
-//    public Event getEvent() {
-//        Event event = new Event();
-//        if (this.txtId.getText().equals("")) {
-//            event.setId(0);
-//        } else {
-//            event.setId(Integer.parseInt(this.txtId.getText().toString()));
-//        }
-//
-//        event.setId(Integer.parseInt(this.txtId.getText().toString()));
-//        event.setEventName(this.txtEventName.getText().toString());
-//        event.setDate(this.txtDate.getText().toString());
-//        event.setLocation(this.txtLocation.getText());
-//        event.setTime(this.txtTime.getText());
-//        event.setAddress(this.txtAddress.getText());
-//        event.setPrice(Double.parseDouble(this.txtPrice.getText().toString()));
-//        event.setOrganizerInformation(this.txtOrganizerInformation.getText());
-//        event.setDescription(this.txtDescription.getText());
-//        event.setAvailableSpace(Integer.parseInt(this.txtAvailableSpace.getText().toString()));
-//        return event;
-//    }
     public Event getEvent() {
 
         Event event = new Event();
@@ -75,9 +55,9 @@ public class DialogEvent extends javax.swing.JDialog {
         event.setAddress(txtAddress.getText().trim());
         event.setDescription(txtDescription.getText().trim());
         event.setOrganizerInformation(txtOrganizerInformation.getText().trim());
-        
+
         return event;
-    }
+    }//endGetEvent
 
     public void setEvent(Event event) {
         this.txtId.setText(String.valueOf(event.getId()));
@@ -103,7 +83,6 @@ public class DialogEvent extends javax.swing.JDialog {
         txtDescription.setText("");
         txtOrganizerInformation.setText("");
         txtAvailableSpace.setText("");
-
     }
 
     public void setListen(ActionListener listener) {
@@ -119,7 +98,6 @@ public class DialogEvent extends javax.swing.JDialog {
     public void setEnableID(boolean option) {
 
         this.txtId.setEnabled(option);
-
     }
 
     /**
@@ -475,4 +453,4 @@ public class DialogEvent extends javax.swing.JDialog {
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables
-}
+}//endClass

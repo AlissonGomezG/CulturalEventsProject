@@ -18,8 +18,8 @@ public class PanelButton extends javax.swing.JPanel {
     public PanelButton() {
         initComponents();
     }
-    
-    public void setListen(ActionListener listener){
+
+    public void setListen(ActionListener listener) {
         this.btnAdd.addActionListener(listener);
         this.btnDelete.addActionListener(listener);
         this.btnEdit.addActionListener(listener);
@@ -100,4 +100,4 @@ public class PanelButton extends javax.swing.JPanel {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     // End of variables declaration//GEN-END:variables
-}
+}//endClass

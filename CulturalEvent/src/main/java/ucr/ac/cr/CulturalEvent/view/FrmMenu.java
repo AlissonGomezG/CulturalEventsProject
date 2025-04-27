@@ -25,7 +25,6 @@ public class FrmMenu extends javax.swing.JFrame {
         this.mniUserRegister.addActionListener(controller);
         this.mniEvents.addActionListener(controller);
         this.mniReserve.addActionListener(controller);
-       
     }
     
 
@@ -122,4 +121,4 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem mniReserve;
     private javax.swing.JMenuItem mniUserRegister;
     // End of variables declaration//GEN-END:variables
-}
+}//endClass

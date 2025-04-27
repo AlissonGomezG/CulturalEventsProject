@@ -44,29 +44,20 @@ public class ReservationController implements ActionListener, MouseListener {
         }
     }
 
-//    @Override
-//    public void mouseClicked(MouseEvent e) {
-//        Event event = this.eventRegister.searchId(this.frmReservation.getRowIDSpace());
-//
-//        int espacio = Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de espacios a reservar"));
-//        double total = espacio * event.getPrice();
-//        int AvailableSpaces = event.getAvailableSpace() - espacio;
-//        this.frmReservation.addReserveTable(event, AvailableSpaces, total);
-//    }
     @Override
     public void mouseClicked(MouseEvent e) {
         Event event = eventRegister.searchId(frmReservation.getRowIDSpace());
 
         try {
-            int espacio = Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de espacios a reservar"));
+            int espacio = Integer.parseInt(JOptionPane.showInputDialog("Please enter the number of spaces to reserve"));
 
             if (espacio <= 0) {
-                JOptionPane.showMessageDialog(frmReservation, "Debe reservar al menos un espacio.");
+                JOptionPane.showMessageDialog(frmReservation, "You must reserve at least one space.");
                 return;
             }
 
             if (espacio > event.getAvailableSpace()) {
-                JOptionPane.showMessageDialog(frmReservation, "No hay suficientes espacios disponibles.");
+                JOptionPane.showMessageDialog(frmReservation, "There are not enough spaces available.");
                 return;
             }
 
@@ -85,7 +76,7 @@ public class ReservationController implements ActionListener, MouseListener {
             frmReservation.setTblEvent(eventRegister.getMatrix(), Event.LABELS_EVENT);
 
         } catch (NumberFormatException ex) {
-            JOptionPane.showMessageDialog(frmReservation, "Debe digitar un número válido.");
+            JOptionPane.showMessageDialog(frmReservation, "You must enter a valid number.");
         }
     }//end
 
@@ -104,5 +95,4 @@ public class ReservationController implements ActionListener, MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
-
 }

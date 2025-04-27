@@ -60,7 +60,6 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
                     dialogUser.setUser(userSearch);
                     dialogUser.setVisible(true);
                 }//endIf
-//                System.out.println("Presionó Edit");
                 break;
             case "delete":
                 if (userSearch != null) {
@@ -68,14 +67,12 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
                     frmUser.setDataTable(userRegister.getMatrix(), User.LABELS_USER);
                     userSearch = null;
                 }//endIf
-//                System.out.println("Presionó Delete");
                 break;
             case "close":
                 frmUser.dispose();
                 break;
 
             case "search":
-//                System.out.println("search");
                 dialogUser.setUser(userRegister.searchId(Integer.parseInt(dialogUser.getId())));
                 dialogUser.setEnableID(true);
                 break;
@@ -86,12 +83,10 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
                         FrmReport.setMessage(userRegister.add(dialogUser.getUser()));
                         dialogUser.clean();
                         dialogUser.dispose();
-//                    System.err.println("save");
                     } else {
                         FrmReport.setMessage(userRegister.edit(dialogUser.getUser()));
                         dialogUser.clean();
                         dialogUser.dispose();
-//                    System.err.println("Edit");
                     }//endIf
                 }//endIf
                 userSearch = null;
@@ -104,7 +99,6 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
                 dialogUser.setEnableID(true);
                 dialogUser.dispose();
                 userSearch = null;
-//                System.out.println("Presionó Cancel");
                 break;
         }//endSwitch
 
@@ -141,7 +135,7 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
         userSearch.setEmail(userRow[2]);
         userSearch.setTelephone(userRow[3]);
         userSearch.setUserType(userRow[4]);
-    }
+    }//end
 
     @Override
     public void mousePressed(MouseEvent e) {
@@ -162,7 +156,7 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
     @Override
     public void keyTyped(KeyEvent e) {
     }
-    
+
     @Override
     public void mouseDragged(MouseEvent e) {
 
@@ -172,15 +166,16 @@ public class UserController implements ActionListener, MouseInputListener, KeyLi
     public void mouseMoved(MouseEvent e) {
 
     }
+
     @Override
     public void keyPressed(KeyEvent e) {
-       
+
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-         this.frmUser.requestFocusInWindow();
+        this.frmUser.requestFocusInWindow();
         this.frmUser.filterByID();
     }
 
-}
+}//endClass

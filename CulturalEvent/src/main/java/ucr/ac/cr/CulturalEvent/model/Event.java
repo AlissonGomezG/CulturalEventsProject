@@ -34,7 +34,6 @@ public class Event {
         description = "";
         organizerInformation = "";
         availableSpace = 0;
-
     }
 
     public Event(int id, String eventName, String date, String location, String time, String address, double price, String description, String organizerInformation, int availableSpace) {
@@ -72,7 +71,6 @@ public class Event {
                 return this.getOrganizerInformation();
             case 9:
                 return String.valueOf(this.getAvailableSpace());
-
         }
         return "";
     }
@@ -161,4 +159,4 @@ public class Event {
     public String toString() {
         return "Event{" + "id=" + id + ", eventName=" + eventName + ", date=" + date + ", location=" + location + ", time=" + time + ", address=" + address + ", price=" + price + ", description=" + description + ", organizerInformation=" + organizerInformation + ", availableSpace=" + availableSpace + '}';
     }
-}
+}//endClass

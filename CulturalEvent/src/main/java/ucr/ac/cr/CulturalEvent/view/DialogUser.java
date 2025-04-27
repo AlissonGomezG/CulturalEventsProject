@@ -28,7 +28,6 @@ public class DialogUser extends javax.swing.JDialog {
         } else {
             user.setId(Integer.parseInt(this.txtId.getText().toString()));
         }
-
         user.setId(Integer.parseInt(this.txtId.getText().toString()));
         user.setName(this.txtName.getText().toString());
         user.setEmail(this.txtEmail.getText().toString().trim());
@@ -254,4 +253,4 @@ public class DialogUser extends javax.swing.JDialog {
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtTelephone;
     // End of variables declaration//GEN-END:variables
-}
+}//endClass

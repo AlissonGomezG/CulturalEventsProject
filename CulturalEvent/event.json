@@ -33,6 +33,18 @@
     "price": 10000.0,
     "description": "Concierto con artistas nacinales",
     "organizerInformation": "yryryry",
-    "availableSpace": 100
+    "availableSpace": 95
+  },
+  {
+    "id": 4,
+    "eventName": "Semana U",
+    "date": "21 de abril",
+    "location": "UCR Nances",
+    "time": "11:00",
+    "address": "Esparza",
+    "price": 1000.0,
+    "description": "Actividades varias",
+    "organizerInformation": "ITM",
+    "availableSpace": 45
   }
 ]

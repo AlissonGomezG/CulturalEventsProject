@@ -30,7 +30,6 @@ public class MenuController implements ActionListener {
         this.eventRegister = new EventRegister();
         this.frmMenu.listenMenu(this);
         this.frmMenu.setVisible(true);
-
     }
 
     @Override
@@ -51,13 +50,12 @@ public class MenuController implements ActionListener {
                 break;
 
             case "Reservation":
-                
-                 String id = JOptionPane.showInputDialog("Digite su ID:");
-                 String userName = JOptionPane.showInputDialog("Digite su nombre:");
+
+                String id = JOptionPane.showInputDialog("Enter your ID:");
+                String userName = JOptionPane.showInputDialog("Enter your name:");
 
                 if (userName.isEmpty() || id.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Debe ingresar nombre e ID para continuar.");
-                    
+                    JOptionPane.showMessageDialog(null, "You must enter a name and an ID to continue.");
                 }
 
                 try {
@@ -65,18 +63,16 @@ public class MenuController implements ActionListener {
                     User user = userRegister.searchId(userId);
 
                     if (user == null || !user.getName().equalsIgnoreCase(userName)) {
-                        JOptionPane.showMessageDialog(null, "Usuario no registrado. Debe registrarse primero.");
-                        
+                        JOptionPane.showMessageDialog(null, "The user is not registered. Please register first.");
                     }
 
                     // Si todo está bien, ahora  muestra la ventana de reservaciones
                     new ReservationController(userRegister, eventRegister);
 
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(null, "Debe digitar un número válido para el ID.");
+                    JOptionPane.showMessageDialog(null, "You must enter a valid number for the ID.");
                 }
                 break;
-                
 
             case "ViewAvailableEvents":
                 FrmTblEvent frmTblEvent = new FrmTblEvent();
@@ -85,7 +81,5 @@ public class MenuController implements ActionListener {
                 break;
 
         }
-
     }
-
 }

@@ -92,8 +92,6 @@ public class GenericDAO_JSON<T> {
         }//endFor
         return false;
     }//endRemove
-
-
     
     public int findById(T element) {
         ArrayList<T> elements = this.getAll();
@@ -105,8 +103,7 @@ public class GenericDAO_JSON<T> {
             }
         }
         return -1;
-    }
-    
+    }//endFindById
 
     public T getElement(int id) {
         ArrayList<T> elements = this.getAll();
