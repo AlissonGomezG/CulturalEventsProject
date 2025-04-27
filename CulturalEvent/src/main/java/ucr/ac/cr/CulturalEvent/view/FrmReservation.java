@@ -100,7 +100,7 @@ public class FrmReservation extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Event", "Date", "Location", "Time", "Price", "Available Spaces", "Total"
+                "ID", "Event", "Date", "Location", "Time", "Price", "Spaces", "Total"
             }
         ));
         jScrollPane4.setViewportView(tblReservation);

@@ -44,15 +44,50 @@ public class ReservationController implements ActionListener, MouseListener {
         }
     }
 
+//    @Override
+//    public void mouseClicked(MouseEvent e) {
+//        Event event = this.eventRegister.searchId(this.frmReservation.getRowIDSpace());
+//
+//        int espacio = Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de espacios a reservar"));
+//        double total = espacio * event.getPrice();
+//        int AvailableSpaces = event.getAvailableSpace() - espacio;
+//        this.frmReservation.addReserveTable(event, AvailableSpaces, total);
+//    }
     @Override
     public void mouseClicked(MouseEvent e) {
-        Event event = this.eventRegister.searchId(this.frmReservation.getRowIDSpace());
+        Event event = eventRegister.searchId(frmReservation.getRowIDSpace());
 
-        int espacio = Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de espacios a reservar"));
-        double total = espacio * event.getPrice();
-        int AvailableSpaces = event.getAvailableSpace() - espacio;
-        this.frmReservation.addReserveTable(event, AvailableSpaces, total);
-    }
+        try {
+            int espacio = Integer.parseInt(JOptionPane.showInputDialog("Digite la cantidad de espacios a reservar"));
+
+            if (espacio <= 0) {
+                JOptionPane.showMessageDialog(frmReservation, "Debe reservar al menos un espacio.");
+                return;
+            }
+
+            if (espacio > event.getAvailableSpace()) {
+                JOptionPane.showMessageDialog(frmReservation, "No hay suficientes espacios disponibles.");
+                return;
+            }
+
+            //Calculos
+            double total = espacio * event.getPrice();
+            int availableSpaces = event.getAvailableSpace() - espacio;
+
+            // Actualizar el evento
+            event.setAvailableSpace(availableSpaces);
+            eventRegister.edit(event); // Se guarda el cambio en el JSON
+
+            // Mostrar en la tabla de reservaciones
+            frmReservation.addReserveTable(event, espacio, total);
+
+            // Actualizar la tabla principal de eventos para reflejar los espacios disponibles
+            frmReservation.setTblEvent(eventRegister.getMatrix(), Event.LABELS_EVENT);
+
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(frmReservation, "Debe digitar un número válido.");
+        }
+    }//end
 
     @Override
     public void mousePressed(MouseEvent e) {

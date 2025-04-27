@@ -110,7 +110,7 @@
                 <Column editable="true" title="Location" type="java.lang.Object"/>
                 <Column editable="true" title="Time" type="java.lang.Object"/>
                 <Column editable="true" title="Price" type="java.lang.Object"/>
-                <Column editable="true" title="Available Spaces" type="java.lang.Object"/>
+                <Column editable="true" title="Spaces" type="java.lang.Object"/>
                 <Column editable="true" title="Total" type="java.lang.Object"/>
               </Table>
             </Property>
