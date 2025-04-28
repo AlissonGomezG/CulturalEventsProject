@@ -8,7 +8,7 @@
     "address": "Puntarenas",
     "price": 2500.0,
     "description": "Artes escénicas, música, teatro.",
-    "organizerInformation": "iiiwp",
+    "organizer": "Alisson Gomez",
     "availableSpace": 48
   },
   {
@@ -20,7 +20,7 @@
     "address": "San Jose",
     "price": 1000.0,
     "description": "Musica, yoga y mas",
-    "organizerInformation": "kdk",
+    "organizer": "Johan Brenes",
     "availableSpace": 25
   },
   {
@@ -32,7 +32,7 @@
     "address": "San Jose",
     "price": 10000.0,
     "description": "Concierto con artistas nacinales",
-    "organizerInformation": "yryryry",
+    "organizer": "Alisson Gomez",
     "availableSpace": 95
   },
   {
@@ -44,7 +44,7 @@
     "address": "Esparza",
     "price": 1000.0,
     "description": "Actividades varias",
-    "organizerInformation": "ITM",
+    "organizer": "Johan Brenes",
     "availableSpace": 45
   }
 ]

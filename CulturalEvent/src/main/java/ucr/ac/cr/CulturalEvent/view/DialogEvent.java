@@ -54,7 +54,7 @@ public class DialogEvent extends javax.swing.JDialog {
         event.setTime(txtTime.getText().trim());
         event.setAddress(txtAddress.getText().trim());
         event.setDescription(txtDescription.getText().trim());
-        event.setOrganizerInformation(txtOrganizerInformation.getText().trim());
+        event.setOrganizer(txtOrganizer.getText().trim());
 
         return event;
     }//endGetEvent
@@ -68,7 +68,7 @@ public class DialogEvent extends javax.swing.JDialog {
         this.txtAddress.setText(event.getAddress());
         this.txtPrice.setText(String.valueOf(event.getPrice()));
         this.txtDescription.setText(event.getDescription());
-        this.txtOrganizerInformation.setText(event.getOrganizerInformation());
+        this.txtOrganizer.setText(event.getOrganizer());
         this.txtAvailableSpace.setText(String.valueOf(event.getAvailableSpace()));
     }
 
@@ -81,7 +81,7 @@ public class DialogEvent extends javax.swing.JDialog {
         txtAddress.setText("");
         txtPrice.setText("");
         txtDescription.setText("");
-        txtOrganizerInformation.setText("");
+        txtOrganizer.setText("");
         txtAvailableSpace.setText("");
     }
 
@@ -118,7 +118,6 @@ public class DialogEvent extends javax.swing.JDialog {
         txtEventName = new javax.swing.JTextField();
         txtDate = new javax.swing.JTextField();
         txtLocation = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtTime = new javax.swing.JTextField();
@@ -128,22 +127,30 @@ public class DialogEvent extends javax.swing.JDialog {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtPrice = new javax.swing.JTextField();
-        txtOrganizerInformation = new javax.swing.JTextField();
+        txtOrganizer = new javax.swing.JTextField();
         txtAvailableSpace = new javax.swing.JTextField();
         btnClose = new javax.swing.JButton();
         txtDescription = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Date");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 150, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Location");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Address");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, -1, -1));
 
         btnOk.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/accept.png"))); // NOI18N
         btnOk.setActionCommand("ok");
@@ -153,6 +160,7 @@ public class DialogEvent extends javax.swing.JDialog {
                 btnOkActionPerformed(evt);
             }
         });
+        getContentPane().add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
 
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
         btnSearch.setActionCommand("cancel");
@@ -162,8 +170,10 @@ public class DialogEvent extends javax.swing.JDialog {
                 btnSearchActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, -1, -1));
 
         txtId.setColumns(6);
+        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
 
         txtEventName.setColumns(10);
         txtEventName.addActionListener(new java.awt.event.ActionListener() {
@@ -171,26 +181,33 @@ public class DialogEvent extends javax.swing.JDialog {
                 txtEventNameActionPerformed(evt);
             }
         });
+        getContentPane().add(txtEventName, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, -1, -1));
 
         txtDate.setColumns(14);
+        getContentPane().add(txtDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, -1, -1));
 
         txtLocation.setColumns(10);
         txtLocation.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-
-        jLabel1.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
-        jLabel1.setText("Event Register");
+        getContentPane().add(txtLocation, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("ID");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Event name");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
 
         txtTime.setColumns(10);
         txtTime.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        getContentPane().add(txtTime, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 190, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Time");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, -1, -1));
 
         txtAddress.setColumns(10);
         txtAddress.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
@@ -199,15 +216,22 @@ public class DialogEvent extends javax.swing.JDialog {
                 txtAddressActionPerformed(evt);
             }
         });
+        getContentPane().add(txtAddress, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Price");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Organizer ");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Available spaces");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
         txtPrice.setColumns(10);
         txtPrice.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
@@ -216,14 +240,16 @@ public class DialogEvent extends javax.swing.JDialog {
                 txtPriceActionPerformed(evt);
             }
         });
+        getContentPane().add(txtPrice, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 310, -1, -1));
 
-        txtOrganizerInformation.setColumns(10);
-        txtOrganizerInformation.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
-        txtOrganizerInformation.addActionListener(new java.awt.event.ActionListener() {
+        txtOrganizer.setColumns(10);
+        txtOrganizer.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
+        txtOrganizer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtOrganizerInformationActionPerformed(evt);
+                txtOrganizerActionPerformed(evt);
             }
         });
+        getContentPane().add(txtOrganizer, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, -1, -1));
 
         txtAvailableSpace.setColumns(10);
         txtAvailableSpace.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
@@ -232,6 +258,7 @@ public class DialogEvent extends javax.swing.JDialog {
                 txtAvailableSpaceActionPerformed(evt);
             }
         });
+        getContentPane().add(txtAvailableSpace, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
 
         btnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/close.png"))); // NOI18N
         btnClose.setActionCommand("cancel");
@@ -241,6 +268,7 @@ public class DialogEvent extends javax.swing.JDialog {
                 btnCloseActionPerformed(evt);
             }
         });
+        getContentPane().add(btnClose, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 400, -1, -1));
 
         txtDescription.setColumns(25);
         txtDescription.setFont(new java.awt.Font("Microsoft YaHei", 0, 14)); // NOI18N
@@ -249,140 +277,15 @@ public class DialogEvent extends javax.swing.JDialog {
                 txtDescriptionActionPerformed(evt);
             }
         });
+        getContentPane().add(txtDescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Microsoft YaHei", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Description");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnOk)
-                .addGap(18, 18, 18)
-                .addComponent(btnClose)
-                .addGap(15, 15, 15))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(174, 174, 174)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtOrganizerInformation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addGap(27, 27, 27)
-                        .addComponent(txtDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
-                        .addComponent(jLabel2)
-                        .addGap(27, 27, 27)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSearch))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtAvailableSpace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel4))
-                        .addGap(27, 27, 27)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
-                        .addComponent(jLabel3)
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEventName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel5)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel1)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(33, 33, 33)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnSearch)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtEventName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtLocation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(txtAvailableSpace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtOrganizerInformation, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel8)
-                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnClose, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btnOk, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addGap(15, 15, 15))
-        );
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/EventRegisterFondo.jpg"))); // NOI18N
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -403,9 +306,9 @@ public class DialogEvent extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPriceActionPerformed
 
-    private void txtOrganizerInformationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrganizerInformationActionPerformed
+    private void txtOrganizerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtOrganizerActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtOrganizerInformationActionPerformed
+    }//GEN-LAST:event_txtOrganizerActionPerformed
 
     private void txtAvailableSpaceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAvailableSpaceActionPerformed
         // TODO add your handling code here:
@@ -431,9 +334,9 @@ public class DialogEvent extends javax.swing.JDialog {
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnOk;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -449,7 +352,7 @@ public class DialogEvent extends javax.swing.JDialog {
     private javax.swing.JTextField txtEventName;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLocation;
-    private javax.swing.JTextField txtOrganizerInformation;
+    private javax.swing.JTextField txtOrganizer;
     private javax.swing.JTextField txtPrice;
     private javax.swing.JTextField txtTime;
     // End of variables declaration//GEN-END:variables

@@ -1,0 +1,56 @@
+@startuml
+annotation java.lang.SuppressWarnings
+class java.awt.event.ActionListener
+class java.awt.event.KeyListener
+class java.awt.event.MouseListener
+class javax.swing.DefaultComboBoxModel
+class javax.swing.JDialog
+class javax.swing.JFrame
+class javax.swing.JOptionPane
+class javax.swing.JPanel
+class javax.swing.RowFilter
+class javax.swing.table.DefaultTableModel
+class javax.swing.table.TableRowSorter
+class ucr.ac.cr.CulturalEvent.model.Event
+class ucr.ac.cr.CulturalEvent.model.User
+class ucr.ac.cr.CulturalEvent.view.DialogEvent
+class ucr.ac.cr.CulturalEvent.view.DialogUser
+class ucr.ac.cr.CulturalEvent.view.FrmMenu
+class ucr.ac.cr.CulturalEvent.view.FrmReport
+class ucr.ac.cr.CulturalEvent.view.FrmReservation
+class ucr.ac.cr.CulturalEvent.view.FrmTblEvent
+class ucr.ac.cr.CulturalEvent.view.PanelButton
+ucr.ac.cr.CulturalEvent.view.DialogEvent ..> java.lang.SuppressWarnings
+ucr.ac.cr.CulturalEvent.view.DialogEvent ..> java.awt.event.ActionListener
+ucr.ac.cr.CulturalEvent.view.DialogEvent --|> javax.swing.JDialog
+ucr.ac.cr.CulturalEvent.view.DialogEvent ..> ucr.ac.cr.CulturalEvent.model.Event
+ucr.ac.cr.CulturalEvent.view.DialogUser ..> java.lang.SuppressWarnings
+ucr.ac.cr.CulturalEvent.view.DialogUser ..> java.awt.event.ActionListener
+ucr.ac.cr.CulturalEvent.view.DialogUser --|> javax.swing.JDialog
+ucr.ac.cr.CulturalEvent.view.DialogUser ..> ucr.ac.cr.CulturalEvent.model.User
+ucr.ac.cr.CulturalEvent.view.FrmMenu ..> java.lang.SuppressWarnings
+ucr.ac.cr.CulturalEvent.view.FrmMenu ..> java.awt.event.ActionListener
+ucr.ac.cr.CulturalEvent.view.FrmMenu --|> javax.swing.JFrame
+ucr.ac.cr.CulturalEvent.view.FrmReport ..> java.lang.SuppressWarnings
+ucr.ac.cr.CulturalEvent.view.FrmReport ..> java.awt.event.KeyListener
+ucr.ac.cr.CulturalEvent.view.FrmReport ..> java.awt.event.MouseListener
+ucr.ac.cr.CulturalEvent.view.FrmReport --|> javax.swing.JFrame
+ucr.ac.cr.CulturalEvent.view.FrmReport ..> javax.swing.JOptionPane
+ucr.ac.cr.CulturalEvent.view.FrmReport ..> javax.swing.RowFilter
+ucr.ac.cr.CulturalEvent.view.FrmReport ..> javax.swing.table.DefaultTableModel
+ucr.ac.cr.CulturalEvent.view.FrmReport ..> javax.swing.table.TableRowSorter
+ucr.ac.cr.CulturalEvent.view.FrmReservation ..> java.lang.SuppressWarnings
+ucr.ac.cr.CulturalEvent.view.FrmReservation ..> java.awt.event.ActionListener
+ucr.ac.cr.CulturalEvent.view.FrmReservation ..> java.awt.event.MouseListener
+ucr.ac.cr.CulturalEvent.view.FrmReservation ..> javax.swing.DefaultComboBoxModel
+ucr.ac.cr.CulturalEvent.view.FrmReservation --|> javax.swing.JFrame
+ucr.ac.cr.CulturalEvent.view.FrmReservation ..> javax.swing.table.DefaultTableModel
+ucr.ac.cr.CulturalEvent.view.FrmReservation ..> ucr.ac.cr.CulturalEvent.model.Event
+ucr.ac.cr.CulturalEvent.view.FrmReservation ..> ucr.ac.cr.CulturalEvent.model.User
+ucr.ac.cr.CulturalEvent.view.FrmTblEvent ..> java.lang.SuppressWarnings
+ucr.ac.cr.CulturalEvent.view.FrmTblEvent --|> javax.swing.JFrame
+ucr.ac.cr.CulturalEvent.view.FrmTblEvent ..> javax.swing.table.DefaultTableModel
+ucr.ac.cr.CulturalEvent.view.PanelButton ..> java.lang.SuppressWarnings
+ucr.ac.cr.CulturalEvent.view.PanelButton ..> java.awt.event.ActionListener
+ucr.ac.cr.CulturalEvent.view.PanelButton --|> javax.swing.JPanel
+@enduml

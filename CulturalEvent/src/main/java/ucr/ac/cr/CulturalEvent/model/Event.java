@@ -18,7 +18,7 @@ public class Event {
     private String address;
     private double price;
     private String description;
-    private String organizerInformation;
+    private String organizer;
     private int availableSpace;
 
     public static final String[] LABELS_EVENT = {" ID", "Event name", "Date", "Location", "Time", "Address", "Price", "Description", "Organizer information", "Available spaces"};
@@ -32,11 +32,11 @@ public class Event {
         address = "";
         price = 0.0;
         description = "";
-        organizerInformation = "";
+        organizer = "";
         availableSpace = 0;
     }
 
-    public Event(int id, String eventName, String date, String location, String time, String address, double price, String description, String organizerInformation, int availableSpace) {
+    public Event(int id, String eventName, String date, String location, String time, String address, double price, String description, String organizer, int availableSpace) {
         this.id = id;
         this.eventName = eventName;
         this.date = date;
@@ -45,7 +45,7 @@ public class Event {
         this.address = address;
         this.price = price;
         this.description = description;
-        this.organizerInformation = organizerInformation;
+        this.organizer = organizer;
         this.availableSpace = availableSpace;
     }
 
@@ -68,7 +68,7 @@ public class Event {
             case 7:
                 return this.getDescription();
             case 8:
-                return this.getOrganizerInformation();
+                return this.getOrganizer();
             case 9:
                 return String.valueOf(this.getAvailableSpace());
         }
@@ -139,12 +139,12 @@ public class Event {
         this.description = description;
     }
 
-    public String getOrganizerInformation() {
-        return organizerInformation;
+    public String getOrganizer() {
+        return organizer;
     }
 
-    public void setOrganizerInformation(String organizerInformation) {
-        this.organizerInformation = organizerInformation;
+    public void setOrganizer(String organizer) {
+        this.organizer = organizer;
     }
 
     public int getAvailableSpace() {
@@ -157,6 +157,6 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event{" + "id=" + id + ", eventName=" + eventName + ", date=" + date + ", location=" + location + ", time=" + time + ", address=" + address + ", price=" + price + ", description=" + description + ", organizerInformation=" + organizerInformation + ", availableSpace=" + availableSpace + '}';
+        return "Event{" + "id=" + id + ", eventName=" + eventName + ", date=" + date + ", location=" + location + ", time=" + time + ", address=" + address + ", price=" + price + ", description=" + description + ", organizer=" + organizer + ", availableSpace=" + availableSpace + '}';
     }
 }//endClass

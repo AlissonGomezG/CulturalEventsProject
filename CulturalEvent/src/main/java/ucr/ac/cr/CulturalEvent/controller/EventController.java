@@ -132,7 +132,7 @@ public class EventController implements ActionListener, MouseListener, KeyListen
         } else if (event.getDescription().isEmpty()) {
             FrmReport.setMessage("The description is missing");
             return false;
-        } else if (event.getOrganizerInformation().isEmpty()) {
+        } else if (event.getOrganizer().isEmpty()) {
             FrmReport.setMessage("The organizer information is missing");
             return false;
         } else if (event.getPrice() == 0.0) {
@@ -156,7 +156,7 @@ public class EventController implements ActionListener, MouseListener, KeyListen
         eventSearch.setAddress(userRow[5]);
         eventSearch.setPrice(Double.parseDouble(userRow[6]));
         eventSearch.setDescription(userRow[7]);
-        eventSearch.setOrganizerInformation(userRow[8]);
+        eventSearch.setOrganizer(userRow[8]);
         eventSearch.setAvailableSpace(Integer.parseInt(userRow[9]));
     }
 
