@@ -55,7 +55,6 @@ public class DialogUser extends javax.swing.JDialog {
     public void setListen(ActionListener listener) {
         this.btnOk.addActionListener(listener);
         this.btnCancel.addActionListener(listener);
-        this.btnSearch.addActionListener(listener);
     }
 
     public String getId() {
@@ -75,7 +74,6 @@ public class DialogUser extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnSearch = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         txtName = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
@@ -92,11 +90,6 @@ public class DialogUser extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        btnSearch.setActionCommand("search");
-        btnSearch.setContentAreaFilled(false);
-        getContentPane().add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
 
         txtId.setColumns(6);
         getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 120, -1, -1));
@@ -181,7 +174,6 @@ public class DialogUser extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnOk;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JComboBox<String> cBoxUserType;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

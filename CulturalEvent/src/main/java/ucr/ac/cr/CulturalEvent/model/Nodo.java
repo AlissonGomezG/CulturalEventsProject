@@ -20,6 +20,10 @@ public class Nodo {
     public int getUserId() {
         return userId;
     }
+    
+    public void setUserId(int userId){
+        this.userId = userId;
+    }
 
     public Nodo getSiguiente() {
         return siguiente;
@@ -28,4 +32,4 @@ public class Nodo {
     public void setSiguiente(Nodo siguiente) {
         this.siguiente = siguiente;
     }
-}
+}//endClass

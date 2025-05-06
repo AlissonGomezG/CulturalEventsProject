@@ -88,7 +88,6 @@ public class DialogEvent extends javax.swing.JDialog {
     public void setListen(ActionListener listener) {
         this.btnClose.addActionListener(listener);
         this.btnOk.addActionListener(listener);
-        this.btnSearch.addActionListener(listener);
     }
 
     public String getId() {
@@ -113,7 +112,6 @@ public class DialogEvent extends javax.swing.JDialog {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnOk = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
         txtId = new javax.swing.JTextField();
         txtEventName = new javax.swing.JTextField();
         txtDate = new javax.swing.JTextField();
@@ -161,16 +159,6 @@ public class DialogEvent extends javax.swing.JDialog {
             }
         });
         getContentPane().add(btnOk, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
-
-        btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/search.png"))); // NOI18N
-        btnSearch.setActionCommand("cancel");
-        btnSearch.setContentAreaFilled(false);
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, -1, -1));
 
         txtId.setColumns(6);
         getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
@@ -318,10 +306,6 @@ public class DialogEvent extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCloseActionPerformed
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSearchActionPerformed
-
     private void txtDescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDescriptionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDescriptionActionPerformed
@@ -333,7 +317,6 @@ public class DialogEvent extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnClose;
     private javax.swing.JButton btnOk;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

@@ -14,7 +14,7 @@ import javax.swing.JOptionPane;
 import ucr.ac.cr.CulturalEvent.model.Event;
 import ucr.ac.cr.CulturalEvent.model.EventRegister;
 import ucr.ac.cr.CulturalEvent.model.UserRegister;
-import ucr.ac.cr.CulturalEvent.model.WaitingUser;
+import ucr.ac.cr.CulturalEvent.model.WaitingPila;
 import ucr.ac.cr.CulturalEvent.view.FrmReservation;
 
 /**
@@ -26,7 +26,7 @@ public class ReservationController implements ActionListener, MouseListener {
     private FrmReservation frmReservation;
     private UserRegister userRegister;
     private EventRegister eventRegister;
-    private Map<Integer, WaitingUser> waitingUser = new HashMap<>();
+    private Map<Integer, WaitingPila> waitingUser = new HashMap<>();
 
     public ReservationController(UserRegister userRegister, EventRegister eventRegister) {
         frmReservation = new FrmReservation();
@@ -61,17 +61,17 @@ public class ReservationController implements ActionListener, MouseListener {
             }
 
             if (espacio > event.getAvailableSpace()) {
-//                JOptionPane.showMessageDialog(frmReservation, "There are not enough spaces available.");
-                // Si no hay suficientes espacios, se agrega al usuario a la cola de espera
+                // Si no hay suficientes espacios, se agrega al usuario a la pila de espera
                 int userId = userRegister.getUserByIndex(frmReservation.getCBoxUserIndex()).getId();
-                WaitingUser cola = waitingUser.get(event.getId());
+                WaitingPila waitingPila = waitingUser.get(event.getId());
 
-                if (cola == null) {
-                    cola = new WaitingUser();
-                    waitingUser.put(event.getId(), cola);
+                if (waitingPila == null) {
+                   waitingPila = new WaitingPila();
+                   waitingUser.put(event.getId(), waitingPila);
                 }
 
-                cola.encolar(userId); // Agregar el usuario a la cola
+                waitingPila.push(userId); // Agregar el usuario a la pila
+                frmReservation.waitingUsers(waitingPila.getLongitud());
                 JOptionPane.showMessageDialog(frmReservation, "No available spaces. The user has been added to the waiting list.");
                 return; // Terminar la ejecución
             }

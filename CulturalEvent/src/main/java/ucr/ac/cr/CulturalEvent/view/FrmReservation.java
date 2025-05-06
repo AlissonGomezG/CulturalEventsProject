@@ -72,6 +72,9 @@ public class FrmReservation extends javax.swing.JFrame {
             String.valueOf(total)});
     }
 
+    public void waitingUsers(int users){
+        lblWaiting.setText("Waiting Users: " +users);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,6 +84,8 @@ public class FrmReservation extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblWaiting = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblReservation = new javax.swing.JTable();
         cboxUsers = new javax.swing.JComboBox<>();
@@ -93,9 +98,19 @@ public class FrmReservation extends javax.swing.JFrame {
         lblName = new javax.swing.JLabel();
         lblUserType = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblWaiting.setForeground(new java.awt.Color(0, 0, 0));
+        lblWaiting.setText("jLabel5");
+        getContentPane().add(lblWaiting, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 480, -1, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("Waiting Users");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, -1, -1));
 
         tblReservation.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,7 +122,7 @@ public class FrmReservation extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tblReservation);
 
-        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 780, 167));
+        getContentPane().add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 280, 780, 167));
 
         cboxUsers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--------", "Item 1", "Item 2", "Item 3", "Item 4" }));
         cboxUsers.setActionCommand("cBoxUsers");
@@ -117,12 +132,12 @@ public class FrmReservation extends javax.swing.JFrame {
                 cboxUsersActionPerformed(evt);
             }
         });
-        getContentPane().add(cboxUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, -1, -1));
+        getContentPane().add(cboxUsers, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("User:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/close.png"))); // NOI18N
         jButton1.setActionCommand("close");
@@ -133,7 +148,7 @@ public class FrmReservation extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 40, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 510, -1, -1));
 
         tblEvent.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,30 +166,31 @@ public class FrmReservation extends javax.swing.JFrame {
         tblEvent.setShowVerticalLines(true);
         jScrollPane3.setViewportView(tblEvent);
 
-        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 110, 780, 170));
+        getContentPane().add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 780, 170));
 
         lblTelefono.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblTelefono.setForeground(new java.awt.Color(0, 0, 0));
         lblTelefono.setText("jLabel4");
-        getContentPane().add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, -1, -1));
+        getContentPane().add(lblTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, -1, -1));
 
         lblID.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblID.setForeground(new java.awt.Color(0, 0, 0));
         lblID.setText("jLabel2");
-        getContentPane().add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 160, -1, -1));
+        getContentPane().add(lblID, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, -1));
 
         lblName.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblName.setForeground(new java.awt.Color(0, 0, 0));
         lblName.setText("jLabel3");
-        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 210, -1, -1));
+        getContentPane().add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
         lblUserType.setFont(new java.awt.Font("Segoe UI", 3, 14)); // NOI18N
         lblUserType.setForeground(new java.awt.Color(0, 0, 0));
         lblUserType.setText("jLabel2");
-        getContentPane().add(lblUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, -1, -1));
+        getContentPane().add(lblUserType, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fondo2.jpg"))); // NOI18N
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 500, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -195,13 +211,16 @@ public class FrmReservation extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cboxUsers;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblTelefono;
     private javax.swing.JLabel lblUserType;
+    private javax.swing.JLabel lblWaiting;
     private javax.swing.JTable tblEvent;
     private javax.swing.JTable tblReservation;
     // End of variables declaration//GEN-END:variables
