@@ -1,5 +1,6 @@
 package ucr.ac.cr.CulturalEvent.controller;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ucr.ac.cr.CulturalEvent.model.User;
@@ -17,41 +18,42 @@ public class UserController {
         this.userService = userService;
     }
 
-    //Listar todos los usuarios
     @GetMapping
-    public List<User> getAll() {
-        return userService.findAll();
+    public ResponseEntity<List<User>> getAllUsers() {
+        List<User> users = userService.getAllUser();
+        return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
-    //Obtener un usuario por ID
     @GetMapping("/{id}")
-    public ResponseEntity<User> getById(@PathVariable Integer id) {
-        return userService.findById(id)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+        if (!userService.existId(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        User user = userService.getUser(id);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    //Crear un nuevo usuario
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody User user) {
-        User saved = userService.save(user);
-        return ResponseEntity.ok(saved);
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        User createdUser = userService.saveUser(user);
+        return new ResponseEntity<>(createdUser, HttpStatus.CREATED);
     }
 
-    //Actualizar un usuario existente
     @PutMapping("/{id}")
-    public ResponseEntity<User> update(@PathVariable Integer id, @RequestBody User user) {
-        return userService.update(id, user)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<User> updateUser(@PathVariable Integer id, @RequestBody User user) {
+        if (!userService.existId(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        User updatedUser = userService.editUser(id, user);
+        return new ResponseEntity<>(updatedUser, HttpStatus.OK);
     }
 
-    //Eliminar un usuario
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
-        boolean deleted = userService.delete(id);
-        return deleted
-                ? ResponseEntity.noContent().build()
-                : ResponseEntity.notFound().build();
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
+        if (!userService.existId(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        userService.deleteUser(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }//end class
