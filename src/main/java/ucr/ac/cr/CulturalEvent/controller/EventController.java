@@ -8,6 +8,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ucr.ac.cr.CulturalEvent.model.Event;
+import ucr.ac.cr.CulturalEvent.service.EventService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -25,15 +26,15 @@ public class EventController {
         return eventService.getAllEvents();
     }
 
-    @GetMapping("/{id}") {
-        public ResponseEntity<?> getEvent(@PathVariable Integer id){
-            Event event = eventService.getEvent(id);
-            if (event == null || event.getId() == 0) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El evento " + id + " no se encuentra");
-            }
-            return ResponseEntity.ok(event);
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getEvent(@PathVariable Integer id) {
+        Event event = eventService.getEvent(id);
+        if (event == null || event.getId() == 0) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El evento " + id + " no se encuentra");
         }
+        return ResponseEntity.ok(event);
     }
+
 
     @PostMapping
     public ResponseEntity<?> saveEvent(@Validated @RequestBody Event event, BindingResult result) {
@@ -47,7 +48,7 @@ public class EventController {
         if (eventService.existId(event.getId())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + event.getId() + " ya se encuntra registrado");
         }
-        Event saveEvent = tareaService.saveEvent(event);
+        Event saveEvent = eventService.saveEvent(event);
         return ResponseEntity.status(HttpStatus.CREATED).body(saveEvent);
     }
 
@@ -70,7 +71,7 @@ public class EventController {
             return ResponseEntity.badRequest().body(errors);
         }
         if (eventService.existId(id)) {
-            if (id!= editEvent.getId()) {
+            if (id != editEvent.getId()) {
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("El identificador de la tarea no es igual al del objeto");
             } else {
                 return ResponseEntity.ok(eventService.editEvent(id, editEvent));
