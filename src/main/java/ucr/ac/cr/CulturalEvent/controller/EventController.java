@@ -14,69 +14,60 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+package ucr.ac.cr.CulturalEvent.controller;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import ucr.ac.cr.CulturalEvent.model.Event;
+import ucr.ac.cr.CulturalEvent.service.EventService;
+
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/event")
+@RequestMapping("/api/events")
 public class EventController {
 
-    @Autowired
-    EventService eventService;
+    private final EventService eventService;
 
+    public EventController(EventService eventService) {
+        this.eventService = eventService;
+    }
+
+    //Listar todos los eventos
     @GetMapping
-    public List<Event> getAllEvents() {
-        return eventService.getAllEvents();
+    public List<Event> getAll() {
+        return eventService.findAll();
     }
 
+    //Obtener un evento por ID
     @GetMapping("/{id}")
-    public ResponseEntity<?> getEvent(@PathVariable Integer id) {
-        Event event = eventService.getEvent(id);
-        if (event == null || event.getId() == 0) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El evento " + id + " no se encuentra");
-        }
-        return ResponseEntity.ok(event);
+    public ResponseEntity<Event> getById(@PathVariable Integer id) {
+        return eventService.findById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
-
+    //Crear un nuevo evento
     @PostMapping
-    public ResponseEntity<?> saveEvent(@Validated @RequestBody Event event, BindingResult result) {
-        if (result.hasErrors()) {
-            Map<String, String> errors = new HashMap<>();
-            for (FieldError error : result.getFieldErrors()) {
-                errors.put(error.getField(), error.getDefaultMessage());
-            }
-            return ResponseEntity.badRequest().body(errors);
-        }
-        if (eventService.existId(event.getId())) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + event.getId() + " ya se encuntra registrado");
-        }
-        Event saveEvent = eventService.saveEvent(event);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saveEvent);
+    public ResponseEntity<Event> create(@RequestBody Event event) {
+        Event saved = eventService.save(event);
+        return ResponseEntity.ok(saved);
     }
 
-    @DeleteMapping
-    public ResponseEntity<?> deleteEvent(@PathVariable Integer id) {
-        if (eventService.existId(id)) {
-            eventService.deleteEvent(id);
-            return ResponseEntity.status(HttpStatus.OK).body("El evento " + id + " fue eliminada con exito");
-        }
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + id + " no se encuentra registrado");
-    }
-
+    //Actualizar un evento existente
     @PutMapping("/{id}")
-    public ResponseEntity<?> editEvent(@Validated @PathVariable Integer id, @RequestBody Event editEvent, BindingResult result) {
-        if (result.hasErrors()) {
-            Map<String, String> errors = new HashMap<>();
-            for (FieldError error : result.getFieldErrors()) {
-                errors.put(error.getField(), error.getDefaultMessage());
-            }
-            return ResponseEntity.badRequest().body(errors);
-        }
-        if (eventService.existId(id)) {
-            if (id != editEvent.getId()) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).body("El identificador de la tarea no es igual al del objeto");
-            } else {
-                return ResponseEntity.ok(eventService.editEvent(id, editEvent));
-            }
-        }
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("La tarea " + id + " no está registrada");
+    public ResponseEntity<Event> update(@PathVariable Integer id, @RequestBody Event event) {
+        return eventService.update(id, event)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    //Eliminar un evento
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+        boolean deleted = eventService.delete(id);
+        return deleted
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.notFound().build();
     }
 }//end class
