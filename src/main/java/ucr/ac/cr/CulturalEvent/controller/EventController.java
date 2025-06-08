@@ -35,7 +35,6 @@ public class EventController {
         return ResponseEntity.ok(event);
     }
 
-
     @PostMapping
     public ResponseEntity<?> saveEvent(@Validated @RequestBody Event event, BindingResult result) {
         if (result.hasErrors()) {
@@ -56,7 +55,7 @@ public class EventController {
     public ResponseEntity<?> deleteEvent(@PathVariable Integer id) {
         if (eventService.existId(id)) {
             eventService.deleteEvent(id);
-            return ResponseEntity.status(HttpStatus.OK).body("El evento " + id + " fue eliminada con exito");
+            return ResponseEntity.status(HttpStatus.OK).body("El evento " + id + " fue eliminado con exito");
         }
         return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + id + " no se encuentra registrado");
     }
@@ -72,11 +71,11 @@ public class EventController {
         }
         if (eventService.existId(id)) {
             if (id != editEvent.getId()) {
-                return ResponseEntity.status(HttpStatus.CONFLICT).body("El identificador de la tarea no es igual al del objeto");
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("El id del evento no es igual al del objeto");
             } else {
                 return ResponseEntity.ok(eventService.editEvent(id, editEvent));
             }
         }
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("La tarea " + id + " no está registrada");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + id + " no está registrado");
     }
 }//end class
