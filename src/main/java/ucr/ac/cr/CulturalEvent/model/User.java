@@ -1,13 +1,19 @@
 package ucr.ac.cr.CulturalEvent.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_user")
 public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private String email;
     private String telephone;
 
     public User() {
-        this.id=0;
     }
 
     public User(Integer id, String name, String email, String telephone) {

@@ -5,41 +5,49 @@ import org.springframework.stereotype.Service;
 import ucr.ac.cr.CulturalEvent.model.User;
 import ucr.ac.cr.CulturalEvent.repository.IRegisterUser;
 import ucr.ac.cr.CulturalEvent.repository.UserRegister;
+import ucr.ac.cr.CulturalEvent.repository.UserRepository;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
-public class UserService implements IRegisterUser {
+public class UserService  {
 
     @Autowired
-    UserRegister userRegister;
+    private UserRepository userRepository;
 
 
-    @Override
+
     public User saveUser(User user) {
-        return this.userRegister.saveUser(user);
+        return userRepository.save(user);
     }
 
-    @Override
-    public List<User> getAllUser() {
-        return this.userRegister.getAllUser();
+
+    public List<User> findAllUser() {
+        return this.userRepository.findAll();
     }
 
-    @Override
-    public User getUser(Integer id) {
-        return this.userRegister.getUser(id);
+
+    public Optional<User> findUserById(Integer id) {
+        return this.userRepository.findById(id);
     }
 
-    @Override
-    public User deleteUser(Integer id) {
-        return this.userRegister.deleteUser(id);
+
+
+    public void deleteUser(Integer id) {
+       this.userRepository.deleteById(id);
     }
 
-    @Override
+
     public User editUser(Integer id, User userEdit) {
-        return this.userRegister.editUser(id,userEdit);
+        Optional<User> userOp=this.userRepository.findById(id);
+        if(userOp.isPresent()){
+            User user=userOp.get();
+            user=userEdit;
+
+            return this.userRepository.save(user);
+        }
+        return null;
     }
 
-    public Boolean existId (Integer id){
-        return this.userRegister.existId(id);
-    }
 }

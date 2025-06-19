@@ -1,7 +1,13 @@
 package ucr.ac.cr.CulturalEvent.model;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "tb_event")
 public class Event {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String eventName;
     private String date;
@@ -14,7 +20,6 @@ public class Event {
     private Integer availableSpace;
 
     public Event() {
-        id=0;
     }
 
     public Event(Integer id, String eventName, String date, String location, String time, String address, Double price, String description, String organizer, Integer availableSpace) {
