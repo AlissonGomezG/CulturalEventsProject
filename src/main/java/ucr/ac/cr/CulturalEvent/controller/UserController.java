@@ -23,7 +23,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping
-    public List<User> finfAllUsers() {
+    public List<User> findAllUsers() {
         return userService.findAllUser();
     }
 
@@ -82,13 +82,17 @@ public class UserController {
             }
             return ResponseEntity.badRequest().body(errors);
         }
-        Optional <User> userOp=this.userService.findUserById(id);
-        if (!userOp.isPresent()) {
-                return ResponseEntity.status(HttpStatus.CONFLICT)
-                        .body("El id no se encuentra registrado");
-        }
 
-        return ResponseEntity.ok(this.userService.editUser(id, userEdit));
+        Optional <User> userOp=this.userService.findUserById(id);
+
+        if (userOp.isPresent()) {
+            if (id != userEdit.getId()) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("El id del usuario no es igual al del objeto");
+            } else {
+                return ResponseEntity.ok(this.userService.editUser(id, userEdit));
+            }
+        }
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("El id no se encuentra registrado");
     }
 }//end class
 
