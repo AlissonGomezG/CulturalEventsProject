@@ -50,4 +50,8 @@ public class UserService  {
         return null;
     }
 
+    public Optional<User> loginByEmail (String email, String password){
+        return userRepository.findByEmailAndPassword(email,password);
+    }
+
 }

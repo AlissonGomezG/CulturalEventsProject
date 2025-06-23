@@ -7,6 +7,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ucr.ac.cr.CulturalEvent.model.DTO.LoginDTO;
 import ucr.ac.cr.CulturalEvent.model.User;
 import ucr.ac.cr.CulturalEvent.service.UserService;
 
@@ -94,5 +95,21 @@ public class UserController {
         }
         return ResponseEntity.status(HttpStatus.CONFLICT).body("El id no se encuentra registrado");
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> loginByEmail (@RequestBody LoginDTO loginDTO){
+        Optional<User> userOp=userService.loginByEmail(loginDTO.getEmail(), loginDTO.getPassword());
+        if (userOp.isPresent()){
+            return ResponseEntity.ok("¡Bienvenido al sistema de reservación de espacios creativos!");
+        }else {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("¡Credenciales incorrectos!");
+        }
+    }
+
+
+
+
+
+
 }//end class
 
