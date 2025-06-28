@@ -27,4 +27,4 @@ public class InscriptionDTO {
     public void setEventId(Integer eventId) {
         this.eventId = eventId;
     }
-}
+}//end class

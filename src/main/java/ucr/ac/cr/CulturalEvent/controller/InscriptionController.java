@@ -102,14 +102,24 @@ public class InscriptionController {
 
     @PutMapping("/{id}/cancel")
     public ResponseEntity<?> cancelInscription(@PathVariable Integer id) {
-        Optional<Inscription> op = inscriptionService.findById(id);
-        if (!op.isPresent()) {
+        Optional<Inscription> inscriptionOp = inscriptionService.findById(id);
+        if (!inscriptionOp.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inscripción no encontrada");
         }
 
-        Inscription inscripcion = op.get();
-        inscripcion.setStatus("CANCELLED");
-        inscriptionService.saveInscription(inscripcion);
+        Inscription inscripcion = inscriptionOp.get();
+
+        // Verificar que la inscripción esté activa
+        if (!"ACTIVE".equals(inscripcion.getStatus())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("La inscripción ya está cancelada");
+        }
+
+        // Cancelar inscripción y liberar espacio
+        Inscription cancelledInscription = inscriptionService.cancelInscriptionAndFreeSpace(inscripcion);
+
+        if (cancelledInscription == null) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al cancelar la inscripción");
+        }
 
         return ResponseEntity.ok("Inscripción cancelada");
     }
@@ -136,4 +146,4 @@ public class InscriptionController {
 
         return ResponseEntity.ok(data);
     }
-}
+}//end class
