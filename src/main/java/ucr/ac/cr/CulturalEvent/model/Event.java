@@ -9,14 +9,23 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column (name = "event_name", nullable = false, length = 100)
     private String eventName;
+    @Column (name = "date", nullable = false, length = 50)
     private String date;
+    @Column (name = "location", nullable = false, length = 100)
     private String location;
+    @Column (name = "time", nullable = false, length = 50)
     private String time;
+    @Column (name = "address", nullable = false, length = 150)
     private String address;
+    @Column (name = "price", nullable = false)
     private Double price;
+    @Column (name = "description", nullable = true, length = 500)
     private String description;
+    @Column (name = "organizer", nullable = false, length = 100)
     private String organizer;
+    @Column (name = "available_space", nullable = false)
     private Integer availableSpace;
 
     public Event() {
