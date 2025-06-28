@@ -23,17 +23,6 @@ public class InscriptionService {
         return inscriptionRepository.save(inscription);
     }
 
-    public List<Inscription> findAllInscription() {
-        return inscriptionRepository.findAll();
-    }
-
-    public Optional<Inscription> findInscriptionById(Integer id) {
-        return inscriptionRepository.findById(id);
-    }
-
-    public void deleteInscription(Integer id) {
-        inscriptionRepository.deleteById(id);
-    }
 
     public List<Inscription> findByEventId(Integer eventId) {
         return inscriptionRepository.findByEventId(eventId);
