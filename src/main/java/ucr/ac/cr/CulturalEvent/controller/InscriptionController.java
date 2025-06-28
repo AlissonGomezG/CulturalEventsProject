@@ -7,10 +7,16 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import ucr.ac.cr.CulturalEvent.model.Event;
 import ucr.ac.cr.CulturalEvent.model.Inscription;
 import ucr.ac.cr.CulturalEvent.model.DTO.InscriptionDTO;
+import ucr.ac.cr.CulturalEvent.model.User;
+import ucr.ac.cr.CulturalEvent.service.EventService;
 import ucr.ac.cr.CulturalEvent.service.InscriptionService;
+import ucr.ac.cr.CulturalEvent.service.UserService;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,87 +27,113 @@ import java.util.Optional;
 public class InscriptionController {
 
     @Autowired
-    InscriptionService inscriptionService;
+    private InscriptionService inscriptionService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private EventService eventService;
+
+    @PostMapping
+    public ResponseEntity<?> saveInscription(@RequestBody InscriptionDTO dto) {
+        Optional<User> userOp = userService.findUserById(dto.getUserId());
+        if (!userOp.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no existe");
+        }
+
+        Optional<Event> eventOp = eventService.findEventById(dto.getEventId());
+        if (!eventOp.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Evento no existe");
+        }
+
+        Event event = eventOp.get();
+
+        // Validar si la fecha del evento ya pasó
+        LocalDate fechaEvento = LocalDate.parse(event.getDate()); // convierte String a fecha
+        if (fechaEvento.isBefore(LocalDate.now())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento ya ocurrió");
+        }
+
+        // Validar si hay espacio disponible
+        List<Inscription> activas = inscriptionService.findActiveByEventId(event.getId());
+        if (activas.size() >= event.getAvailableSpace()) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("No hay cupo disponible");
+        }
+
+        // Validar si ya está inscrito
+        for (Inscription ins : activas) {
+            if (ins.getUser().getId().equals(dto.getUserId())) {
+                return ResponseEntity.status(HttpStatus.CONFLICT).body("Ya estás inscrito");
+            }
+        }
+
+        // Crear inscripción
+        String fechaActual = LocalDateTime.now().toString();
+        Inscription inscripcion = new Inscription(null, userOp.get(), event, fechaActual, "ACTIVE");
+
+        Inscription guardada = inscriptionService.saveInscription(inscripcion);
+        return ResponseEntity.status(HttpStatus.CREATED).body(guardada);
+    }
 
     @GetMapping
-    public List<Inscription> findAllInscriptions() {
-        return inscriptionService.findAllInscription();
+    public List<Inscription> getAll() {
+        return inscriptionService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getInscription(@PathVariable Integer id) {
-        Optional<Inscription> inscription = inscriptionService.findInscriptionById(id);
-        if (!inscription.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("La inscripción " + id + " no se encuentra");
+    public ResponseEntity<?> findById(@PathVariable Integer id) {
+        Optional<Inscription> op = inscriptionService.findById(id);
+        if (!op.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inscripción no encontrada");
         }
-        return ResponseEntity.ok(inscription);
-    }
-
-    @PostMapping
-    public ResponseEntity<?> saveInscription(@Validated @RequestBody InscriptionDTO inscriptionDTO, BindingResult result) {
-        if (result.hasErrors()) {
-            Map<String, String> errors = new HashMap<>();
-            for (FieldError error : result.getFieldErrors()) {
-                errors.put(error.getField(), error.getDefaultMessage());
-            }
-            return ResponseEntity.badRequest().body(errors);
-        }
-
-        try {
-            Inscription savedInscription = inscriptionService.saveInscription(
-                    inscriptionDTO.getUserId(),
-                    inscriptionDTO.getEventId()
-            );
-            if (savedInscription == null) {
-                return ResponseEntity.status(HttpStatus.CONFLICT)
-                        .body("No se pudo crear la inscripción. Verifique que el usuario y evento existan, que haya espacios disponibles y que no esté ya inscrito.");
-            }
-            return ResponseEntity.status(HttpStatus.CREATED).body(savedInscription);
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error interno del servidor");
-        }
+        return ResponseEntity.ok(op.get());
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteInscription(@PathVariable Integer id) {
-        Optional<Inscription> inscriptionOp = inscriptionService.findInscriptionById(id);
-        if (!inscriptionOp.isPresent()) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("El ID " + id + " No se encuentra registrado");
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
+        Optional<Inscription> op = inscriptionService.findById(id);
+        if (!op.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inscripción no existe");
         }
-        inscriptionService.deleteInscription(id);
-        return ResponseEntity.ok("Se eliminó la inscripción con el id: " + id);
+        inscriptionService.deleteById(id);
+        return ResponseEntity.ok("Inscripción eliminada");
     }
 
     @PutMapping("/{id}/cancel")
     public ResponseEntity<?> cancelInscription(@PathVariable Integer id) {
-        Inscription cancelledInscription = inscriptionService.cancelInscription(id);
-        if (cancelledInscription == null) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("La inscripción " + id + " no se encuentra");
+        Optional<Inscription> op = inscriptionService.findById(id);
+        if (!op.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inscripción no encontrada");
         }
-        return ResponseEntity.ok(cancelledInscription);
+
+        Inscription inscripcion = op.get();
+        inscripcion.setStatus("CANCELLED");
+        inscriptionService.saveInscription(inscripcion);
+
+        return ResponseEntity.ok("Inscripción cancelada");
     }
 
-    @GetMapping("/user/{userId}")
-    public ResponseEntity<?> getInscriptionsByUser(@PathVariable Integer userId) {
-        List<Inscription> inscriptions = inscriptionService.findInscriptionsByUserId(userId);
-        return ResponseEntity.ok(inscriptions);
+    @GetMapping("/evento/{eventId}")
+    public List<Inscription> listByEvent(@PathVariable Integer eventId) {
+        return inscriptionService.findByEventId(eventId);
     }
 
-    @GetMapping("/event/{eventId}")
-    public ResponseEntity<?> getInscriptionsByEvent(@PathVariable Integer eventId) {
-        List<Inscription> inscriptions = inscriptionService.findInscriptionsByEventId(eventId);
-        return ResponseEntity.ok(inscriptions);
-    }
+    @GetMapping("/evento/{eventId}/estado")
+    public ResponseEntity<?> estadoEvento(@PathVariable Integer eventId) {
+        Optional<Event> eventOp = eventService.findEventById(eventId);
+        if (!eventOp.isPresent()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Evento no encontrado");
+        }
 
-    @GetMapping("/user/{userId}/active")
-    public ResponseEntity<?> getActiveInscriptionsByUser(@PathVariable Integer userId) {
-        List<Inscription> inscriptions = inscriptionService.findActiveInscriptionsByUserId(userId);
-        return ResponseEntity.ok(inscriptions);
-    }
+        Event event = eventOp.get();
+        boolean activo = LocalDate.parse(event.getDate()).isAfter(LocalDate.now());
+        int inscripciones = inscriptionService.findActiveByEventId(eventId).size();
 
-    @GetMapping("/event/{eventId}/active")
-    public ResponseEntity<?> getActiveInscriptionsByEvent(@PathVariable Integer eventId) {
-        List<Inscription> inscriptions = inscriptionService.findActiveInscriptionsByEventId(eventId);
-        return ResponseEntity.ok(inscriptions);
+        Map<String, Object> data = new HashMap<>();
+        data.put("eventoActivo", activo);
+        data.put("inscripcionesActivas", inscripciones);
+
+        return ResponseEntity.ok(data);
     }
 }

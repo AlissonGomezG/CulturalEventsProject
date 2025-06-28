@@ -3,8 +3,6 @@ package ucr.ac.cr.CulturalEvent.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ucr.ac.cr.CulturalEvent.model.User;
-import ucr.ac.cr.CulturalEvent.repository.IRegisterUser;
-import ucr.ac.cr.CulturalEvent.repository.UserRegister;
 import ucr.ac.cr.CulturalEvent.repository.UserRepository;
 
 import java.util.List;
