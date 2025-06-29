@@ -99,17 +99,23 @@ public class UserController {
     @PostMapping("/login")
     public ResponseEntity<?> loginByEmail (@RequestBody LoginDTO loginDTO){
         Optional<User> userOp=userService.loginByEmail(loginDTO.getEmail(), loginDTO.getPassword());
+
         if (userOp.isPresent()){
-            return ResponseEntity.ok("¡Bienvenido al sistema de reservación de espacios creativos!");
+
+            User user = userOp.get();
+
+            LoginDTO response = new LoginDTO(
+                    "¡Bienvenido al sistema de reservación de espacios creativos!",
+                    user.getEmail(),
+                    user.getPassword(),
+                    user.getProfile()
+            );
+
+            return ResponseEntity.ok(response);
         }else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("¡Credenciales incorrectos!");
         }
     }
-
-
-
-
-
 
 }//end class
 

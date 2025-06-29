@@ -8,8 +8,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ucr.ac.cr.CulturalEvent.model.Event;
-import ucr.ac.cr.CulturalEvent.model.User;
 import ucr.ac.cr.CulturalEvent.service.EventService;
+import ucr.ac.cr.CulturalEvent.service.UserService;
 
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +22,10 @@ public class EventController {
 
     @Autowired
     EventService eventService;
+
+    @Autowired
+    private UserService userService;
+
 
     @GetMapping
     public List<Event> findAllEvents() {
@@ -57,6 +61,9 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.CREATED).body(saveEvent);
     }
 
+
+
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEvent(@PathVariable Integer id) {
         Optional<Event> eventOptional = this.eventService.findEventById(id);
@@ -70,6 +77,7 @@ public class EventController {
     @PutMapping("/{id}")
     public ResponseEntity<?> editEvent(@Validated @PathVariable Integer id, @RequestBody Event editEvent, BindingResult result) {
         Optional<Event> eventOptional = this.eventService.findEventById(id);
+
 
         if (result.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
@@ -89,4 +97,6 @@ public class EventController {
         }
         return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + id + " no está registrado");
     }
+
+
 }//end class

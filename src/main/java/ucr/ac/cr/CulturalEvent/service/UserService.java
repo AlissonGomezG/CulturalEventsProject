@@ -52,4 +52,14 @@ public class UserService  {
         return userRepository.findByEmailAndPassword(email,password);
     }
 
+
+    public Optional<User> findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+
+    public boolean isOrganizer(String email) {
+        Optional<User> user = userRepository.findByEmail(email);
+        return user.isPresent() && "organizer".equals(user.get().getProfile());
+    }
 }
