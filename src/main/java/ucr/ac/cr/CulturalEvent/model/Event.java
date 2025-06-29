@@ -17,30 +17,21 @@ public class Event {
     private String location;
     @Column (name = "time", nullable = false, length = 50)
     private String time;
-    @Column (name = "address", nullable = false, length = 150)
-    private String address;
-    @Column (name = "price", nullable = false)
-    private Double price;
     @Column (name = "description", nullable = true, length = 500)
     private String description;
-    @Column (name = "organizer", nullable = false, length = 100)
-    private String organizer;
     @Column (name = "available_space", nullable = false)
     private Integer availableSpace;
 
     public Event() {
     }
 
-    public Event(Integer id, String eventName, String date, String location, String time, String address, Double price, String description, String organizer, Integer availableSpace) {
+    public Event(Integer id, String eventName, String date, String location, String time, String description, Integer availableSpace) {
         this.id = id;
         this.eventName = eventName;
         this.date = date;
         this.location = location;
         this.time = time;
-        this.address = address;
-        this.price = price;
         this.description = description;
-        this.organizer = organizer;
         this.availableSpace = availableSpace;
     }
 
@@ -84,13 +75,6 @@ public class Event {
         this.time = time;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 
     public String getDescription() {
         return description;
@@ -98,22 +82,6 @@ public class Event {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String getOrganizer() {
-        return organizer;
-    }
-
-    public void setOrganizer(String organizer) {
-        this.organizer = organizer;
     }
 
     public Integer getAvailableSpace() {
