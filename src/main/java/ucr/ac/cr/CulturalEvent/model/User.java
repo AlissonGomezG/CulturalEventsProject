@@ -8,17 +8,17 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name ="id",nullable = false,unique = true,length = 10)
+    @Column(name = "id", nullable = false, unique = true, length = 10)
     private Integer id;
-    @Column(name ="name",nullable = false,length = 70)
+    @Column(name = "name", nullable = false, length = 70)
     private String name;
-    @Column(name ="email",nullable = false,length = 150)
+    @Column(name = "email", nullable = false, length = 150)
     private String email;
-    @Column(name ="telephone",nullable = false,length = 20)
+    @Column(name = "telephone", nullable = false, length = 20)
     private String telephone;
-    @Column(name ="profile",nullable = false,length = 20)
+    @Column(name = "profile", nullable = false, length = 20)
     private String profile;
-    @Column(name ="password",nullable = false,length = 150)
+    @Column(name = "password", nullable = false, length = 150)
     private String password;
 
     public User() {
@@ -80,4 +80,4 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-}
+}//end clas

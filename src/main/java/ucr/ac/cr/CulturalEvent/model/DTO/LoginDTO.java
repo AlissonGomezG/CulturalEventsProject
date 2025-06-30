@@ -20,15 +20,15 @@ public class LoginDTO {
         return email;
     }
 
-    public void setEmail (String email){
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getPassword () {
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword (String password){
+    public void setPassword(String password) {
         this.password = password;
     }
 
@@ -47,4 +47,4 @@ public class LoginDTO {
     public void setMessage(String message) {
         this.message = message;
     }
-}
+}//end class

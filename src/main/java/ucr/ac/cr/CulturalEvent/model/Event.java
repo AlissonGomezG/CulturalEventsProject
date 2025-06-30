@@ -9,17 +9,17 @@ public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column (name = "event_name", nullable = false, length = 100)
+    @Column(name = "event_name", nullable = false, length = 100)
     private String eventName;
-    @Column (name = "date", nullable = false, length = 50)
+    @Column(name = "date", nullable = false, length = 50)
     private String date;
-    @Column (name = "location", nullable = false, length = 100)
+    @Column(name = "location", nullable = false, length = 100)
     private String location;
-    @Column (name = "time", nullable = false, length = 50)
+    @Column(name = "time", nullable = false, length = 50)
     private String time;
-    @Column (name = "description", nullable = true, length = 500)
+    @Column(name = "description", nullable = true, length = 500)
     private String description;
-    @Column (name = "available_space", nullable = false)
+    @Column(name = "available_space", nullable = false)
     private Integer availableSpace;
 
     public Event() {
@@ -75,7 +75,6 @@ public class Event {
         this.time = time;
     }
 
-
     public String getDescription() {
         return description;
     }
@@ -92,4 +91,4 @@ public class Event {
         this.availableSpace = availableSpace;
     }
 
-}
+}//end class

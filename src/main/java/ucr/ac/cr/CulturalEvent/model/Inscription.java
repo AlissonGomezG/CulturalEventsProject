@@ -76,4 +76,4 @@ public class Inscription {
     public void setStatus(String status) {
         this.status = status;
     }
-}
+}//end class

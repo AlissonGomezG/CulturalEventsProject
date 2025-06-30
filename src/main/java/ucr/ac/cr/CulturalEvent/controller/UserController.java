@@ -31,46 +31,44 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> getUser(@PathVariable Integer id) {
-       Optional <User> user = userService.findUserById(id);
+        Optional<User> user = userService.findUserById(id);
         if (!user.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El usuario " + id + " no se encuentra");
         }
         return ResponseEntity.ok(user);
     }
 
-   @PostMapping
-   public ResponseEntity<?> saveUser(@Validated @RequestBody User user, BindingResult result) {
-       if (result.hasErrors()) {
-           Map<String, String> errors = new HashMap<>();
-           for (FieldError error : result.getFieldErrors()) {
-               errors.put(error.getField(), error.getDefaultMessage());
-           }
-           return ResponseEntity.badRequest().body(errors);
-       }
+    @PostMapping
+    public ResponseEntity<?> saveUser(@Validated @RequestBody User user, BindingResult result) {
+        if (result.hasErrors()) {
+            Map<String, String> errors = new HashMap<>();
+            for (FieldError error : result.getFieldErrors()) {
+                errors.put(error.getField(), error.getDefaultMessage());
+            }
+            return ResponseEntity.badRequest().body(errors);
+        }
 
-       if (user.getId() != null) {
-           Optional<User> userOp = userService.findUserById(user.getId());
-           if (userOp.isPresent()) {
-               return ResponseEntity.status(HttpStatus.CONFLICT)
-                       .body("El usuario " + user.getId() + " ya se encuentra registrado");
-           }
-       }
+        if (user.getId() != null) {
+            Optional<User> userOp = userService.findUserById(user.getId());
+            if (userOp.isPresent()) {
+                return ResponseEntity.status(HttpStatus.CONFLICT)
+                        .body("El usuario " + user.getId() + " ya se encuentra registrado");
+            }
+        }
 
-       User savedUser = userService.saveUser(user);
-       return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
-   }
-
+        User savedUser = userService.saveUser(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedUser);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Integer id) {
-        Optional <User> userOp=this.userService.findUserById(id);
+        Optional<User> userOp = this.userService.findUserById(id);
         if (!userOp.isPresent()) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("El ID " + id + " No se encuentra registrado");
         }
         this.userService.deleteUser(id);
         return ResponseEntity.ok("Se eliminó el usuario con el id: " + id);
     }
-
 
     @PutMapping("/{id}")
     public ResponseEntity<?> editUser(@Validated @PathVariable Integer id,
@@ -104,18 +102,12 @@ public class UserController {
 
             User user = userOp.get();
 
-            LoginDTO response = new LoginDTO(
-                    "¡Bienvenido al sistema de reservación de espacios creativos!",
-                    user.getEmail(),
-                    user.getPassword(),
-                    user.getProfile()
-            );
+            LoginDTO response = new LoginDTO("¡Bienvenido al sistema de reservación de espacios creativos!", user.getEmail(), user.getPassword(), user.getProfile());
 
             return ResponseEntity.ok(response);
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("¡Credenciales incorrectos!");
         }
     }
-
 }//end class
 

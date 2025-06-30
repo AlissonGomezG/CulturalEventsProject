@@ -3,9 +3,6 @@ package ucr.ac.cr.CulturalEvent.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ucr.ac.cr.CulturalEvent.model.Event;
 import ucr.ac.cr.CulturalEvent.model.Inscription;
@@ -40,18 +37,18 @@ public class InscriptionController {
     public ResponseEntity<?> saveInscription(@RequestBody InscriptionDTO dto) {
         Optional<User> userOp = userService.findUserById(dto.getUserId());
         if (!userOp.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario no existe");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El usuario no existe");
         }
 
         Optional<Event> eventOp = eventService.findEventById(dto.getEventId());
         if (!eventOp.isPresent()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Evento no existe");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El evento no existe");
         }
 
         Event event = eventOp.get();
 
         // Validar si la fecha del evento ya pasó
-        LocalDate fechaEvento = LocalDate.parse(event.getDate()); // convierte String a fecha
+        LocalDate fechaEvento = LocalDate.parse(event.getDate());
         if (fechaEvento.isBefore(LocalDate.now())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento ya ocurrió");
         }
@@ -92,7 +89,7 @@ public class InscriptionController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id) {
+    public ResponseEntity<?> deleteInscription(@PathVariable Integer id) {
         Optional<Inscription> op = inscriptionService.findById(id);
         if (!op.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Inscripción no existe");
@@ -131,19 +128,19 @@ public class InscriptionController {
     }
 
     @GetMapping("/evento/{eventId}/estado")
-    public ResponseEntity<?> estadoEvento(@PathVariable Integer eventId) {
+    public ResponseEntity<?> eventoStatus(@PathVariable Integer eventId) {
         Optional<Event> eventOp = eventService.findEventById(eventId);
         if (!eventOp.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Evento no encontrado");
         }
 
         Event event = eventOp.get();
-        boolean activo = LocalDate.parse(event.getDate()).isAfter(LocalDate.now());
-        int inscripciones = inscriptionService.findActiveByEventId(eventId).size();
+        boolean active = LocalDate.parse(event.getDate()).isAfter(LocalDate.now());
+        int inscriptions = inscriptionService.findActiveByEventId(eventId).size();
 
         Map<String, Object> data = new HashMap<>();
-        data.put("eventoActivo", activo);
-        data.put("inscripcionesActivas", inscripciones);
+        data.put("eventoActivo", active);
+        data.put("inscripcionesActivas", inscriptions);
 
         return ResponseEntity.ok(data);
     }
@@ -152,5 +149,4 @@ public class InscriptionController {
     public List<Inscription> findByUserId(@PathVariable Integer userId) {
         return inscriptionService.findByUserId(userId);
     }
-
 }//end class

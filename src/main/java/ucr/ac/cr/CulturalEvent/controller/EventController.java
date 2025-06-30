@@ -34,7 +34,7 @@ public class EventController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findEventById(@PathVariable Integer id) {
-        Optional <Event> event = eventService.findEventById(id);
+        Optional<Event> event = eventService.findEventById(id);
         if (!event.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("El evento " + id + " no se encuentra");
         }
@@ -50,7 +50,7 @@ public class EventController {
             }
             return ResponseEntity.badRequest().body(errors);
         }
-        if (event.getId() !=null) {
+        if (event.getId() != null) {
 
             Optional<Event> eventOptional = eventService.findEventById(event.getId());
             if (eventOptional.isPresent()) {
@@ -61,9 +61,6 @@ public class EventController {
         return ResponseEntity.status(HttpStatus.CREATED).body(saveEvent);
     }
 
-
-
-
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteEvent(@PathVariable Integer id) {
         Optional<Event> eventOptional = this.eventService.findEventById(id);
@@ -71,7 +68,7 @@ public class EventController {
             this.eventService.deleteEvent(id);
             return ResponseEntity.status(HttpStatus.OK).body("El evento " + id + " fue eliminado con exito");
         }
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + id + " no se encuentra registrado");
+        return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + id + " no se encuentra registrado");
     }
 
     @PutMapping("/{id}")
@@ -97,6 +94,4 @@ public class EventController {
         }
         return ResponseEntity.status(HttpStatus.CONFLICT).body("El evento " + id + " no está registrado");
     }
-
-
 }//end class
