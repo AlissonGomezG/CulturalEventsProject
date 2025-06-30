@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/event")
+@CrossOrigin(origins = "*")
 public class EventController {
 
     @Autowired
@@ -25,7 +26,6 @@ public class EventController {
 
     @Autowired
     private UserService userService;
-
 
     @GetMapping
     public List<Event> findAllEvents() {

@@ -24,6 +24,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/inscriptions")
+@CrossOrigin(origins = "*")
 public class InscriptionController {
 
     @Autowired
@@ -146,4 +147,10 @@ public class InscriptionController {
 
         return ResponseEntity.ok(data);
     }
+
+    @GetMapping("/user/{userId}")
+    public List<Inscription> findByUserId(@PathVariable Integer userId) {
+        return inscriptionService.findByUserId(userId);
+    }
+
 }//end class

@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "*")
 public class UserController {
 
     @Autowired
@@ -71,7 +72,6 @@ public class UserController {
     }
 
 
-
     @PutMapping("/{id}")
     public ResponseEntity<?> editUser(@Validated @PathVariable Integer id,
                                       @RequestBody User userEdit,
@@ -84,7 +84,7 @@ public class UserController {
             return ResponseEntity.badRequest().body(errors);
         }
 
-        Optional <User> userOp=this.userService.findUserById(id);
+        Optional<User> userOp = this.userService.findUserById(id);
 
         if (userOp.isPresent()) {
             if (id != userEdit.getId()) {
@@ -97,10 +97,10 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginByEmail (@RequestBody LoginDTO loginDTO){
-        Optional<User> userOp=userService.loginByEmail(loginDTO.getEmail(), loginDTO.getPassword());
+    public ResponseEntity<?> loginByEmail(@RequestBody LoginDTO loginDTO) {
+        Optional<User> userOp = userService.loginByEmail(loginDTO.getEmail(), loginDTO.getPassword());
 
-        if (userOp.isPresent()){
+        if (userOp.isPresent()) {
 
             User user = userOp.get();
 
@@ -112,7 +112,7 @@ public class UserController {
             );
 
             return ResponseEntity.ok(response);
-        }else {
+        } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("¡Credenciales incorrectos!");
         }
     }

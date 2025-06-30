@@ -16,4 +16,5 @@ public interface InscriptionRepository extends JpaRepository<Inscription, Intege
 
     List<Inscription> findByEventIdAndStatus(Integer eventId, String status);
 
+    List<Inscription> findByUserId(Integer userId);
 }//end class

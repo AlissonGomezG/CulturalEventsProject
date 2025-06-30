@@ -31,6 +31,9 @@ public class InscriptionService {
         return inscriptionRepository.findByEventId(eventId);
     }
 
+    public List<Inscription> findByUserId(Integer userId) {
+        return inscriptionRepository.findByUserId(userId);
+    }
 
     public List<Inscription> findActiveByEventId(Integer id) {
         return inscriptionRepository.findByEventIdAndStatus(id, "ACTIVE");

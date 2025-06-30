@@ -1,7 +1,7 @@
 package ucr.ac.cr.CulturalEvent.model.DTO;
 
 public class LoginDTO {
-    private String menssage;
+    private String message;
     private String email;
     private String password;
     private String profile;
@@ -9,8 +9,8 @@ public class LoginDTO {
     public LoginDTO() {
     }
 
-    public LoginDTO(String menssage, String email, String password, String profile) {
-        this.menssage = menssage;
+    public LoginDTO(String message, String email, String password, String profile) {
+        this.message = message;
         this.email = email;
         this.password = password;
         this.profile = profile;
@@ -40,11 +40,11 @@ public class LoginDTO {
         this.profile = profile;
     }
 
-    public String getMenssage() {
-        return menssage;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMenssage(String menssage) {
-        this.menssage = menssage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
